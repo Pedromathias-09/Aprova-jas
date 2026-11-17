@@ -1,0 +1,223 @@
+/* =========================
+   LOGIN E ESCOLHA DE PERFIL
+========================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #11182e;
+    background: #f8fafc;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.logo-img { height: 48px; width: auto; display: block; }
+
+/* Paleta única do site: azul, laranja, amarelo e branco (todos os perfis usam a mesma) */
+:root, .tema-aluno, .tema-professor, .tema-adm { --cor: #2d3fd3; --cor-escura: #1a2087; --cor-clara: #e8edff; --laranja: #f39a08; --amarelo: #ffc94d; }
+
+/* ---------- Escolha de perfil ---------- */
+.pagina-entrar {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 25%, rgba(45, 63, 211, 0.13), transparent 40%),
+        #f8fafc;
+}
+
+.topo {
+    height: 82px;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.voltar { color: #506078; font-weight: bold; }
+.voltar:hover { color: #2d3fd3; }
+
+.escolha {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 28px 80px;
+    text-align: center;
+}
+
+.escolha h1 { font-size: 46px; letter-spacing: -1px; margin-bottom: 14px; }
+.escolha h1 span { color: #2d3fd3; }
+.escolha > p { color: #526986; font-size: 19px; margin-bottom: 50px; }
+
+.perfis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.perfil {
+    --cor: #2d3fd3;
+    --cor-clara: #e8edff;
+
+    padding: 38px 28px;
+    background: white;
+    border: 1px solid #e0e4e9;
+    border-top: 5px solid var(--cor);
+    border-radius: 22px;
+    transition: 0.2s;
+}
+
+.perfil-professor { --cor: #18bd5c; --cor-clara: #eafaf0; }
+.perfil-adm       { --cor: #f39a08; --cor-clara: #fff4df; }
+
+.perfil:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 40px rgba(30, 43, 65, 0.1);
+}
+
+.perfil-icone {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: var(--cor-clara);
+    font-size: 40px;
+}
+
+.perfil h2 { font-size: 26px; margin-bottom: 10px; }
+.perfil p { color: #526986; line-height: 1.55; min-height: 75px; }
+.perfil-seta { display: inline-block; margin-top: 18px; color: var(--cor); font-weight: bold; }
+
+/* ---------- Página de login ---------- */
+.pagina-login {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+}
+
+.lado {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(135deg, var(--cor), var(--cor-escura));
+}
+
+.lado-icone {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 52px;
+}
+
+.lado h2 { font-size: 44px; margin-bottom: 18px; letter-spacing: -1px; }
+.lado p { max-width: 460px; font-size: 20px; line-height: 1.6; opacity: 0.92; }
+
+.form-area {
+    padding: 40px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-caixa { width: 100%; max-width: 420px; }
+
+.logo-link { display: inline-block; margin-bottom: 35px; }
+
+.form-caixa h1 { font-size: 32px; margin-bottom: 8px; }
+.sub { color: #526986; margin-bottom: 28px; line-height: 1.5; }
+
+label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 15px; }
+
+input {
+    width: 100%;
+    height: 54px;
+    margin-bottom: 20px;
+    padding: 0 16px;
+    border: 1px solid #dfe3ea;
+    border-radius: 14px;
+    font-size: 16px;
+    background: #f8fafc;
+    transition: 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--cor);
+    background: white;
+    box-shadow: 0 0 0 4px var(--cor-clara);
+}
+
+.esqueci { display: block; margin: -6px 0 24px; text-align: right; font-size: 14px; color: var(--cor); font-weight: bold; }
+
+.btn-entrar {
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 14px;
+    background: var(--cor);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-entrar:hover { background: var(--cor-escura); transform: translateY(-2px); }
+
+.cadastro-link { margin-top: 22px; text-align: center; color: #526986; font-size: 15px; }
+.cadastro-link a { color: var(--cor); font-weight: bold; }
+
+.outros {
+    margin-top: 32px;
+    padding-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    border-top: 1px solid #e5e8ed;
+    font-size: 14px;
+    color: #66758b;
+}
+
+.outros a { color: #11182e; font-weight: bold; }
+.outros a:hover { color: var(--cor); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+    .perfis { grid-template-columns: 1fr; }
+    .perfil p { min-height: 0; }
+    .pagina-login { grid-template-columns: 1fr; }
+    .lado { padding: 40px 28px; }
+    .lado h2 { font-size: 32px; }
+    .lado-icone { width: 70px; height: 70px; font-size: 36px; margin-bottom: 18px; }
+    .escolha h1 { font-size: 34px; }
+}
+
+
+/* ---------- Mensagens e acesso de colaboradores ---------- */
+.erro { margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; background: #fdecec; color: #c62828; font-size: 14px; line-height: 1.5; }
+.erro.info { background: var(--cor-clara, #e8edff); color: var(--cor-escura, #1a2087); }
+.info { margin: -10px 0 18px; padding: 12px 14px; border-radius: 12px; background: var(--cor-clara); color: var(--cor-escura); font-size: 14px; line-height: 1.5; }
+.restrito { margin-bottom: 14px; padding: 10px 14px; border-radius: 12px; background: var(--cor-clara); color: var(--cor-escura); font-size: 14px; line-height: 1.5; }
+.outros .colab { color: #66758b; font-weight: normal; }
+.perfis-2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
+@media (max-width: 900px) { .perfis-2 { grid-template-columns: 1fr; } }
+
+
+/* ---------- Botão de olho nos campos de senha ---------- */
+.campo-senha { position: relative; }
+.campo-senha input { padding-right: 52px; }
+.ver-senha { position: absolute; top: 0; right: 6px; bottom: 0; width: 44px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; color: #66758b; cursor: pointer; border-radius: 10px; }
+.ver-senha:hover { color: #11182e; }
+.ver-senha:focus-visible { outline: 3px solid #a9b6ff; outline-offset: -3px; }
+.campo-senha { margin-bottom: 20px; }
+.campo-senha input { margin-bottom: 0; }

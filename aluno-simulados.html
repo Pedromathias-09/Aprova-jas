@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulados | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class="ativo"><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Simulados</h1>
+                <p>Agende simulados completos e acompanhe seus resultados.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div id="sim-area">
+            <div class="cab"><h2>Simulados</h2><button type="button" class="btn-azul" data-abrir="dlg-sim">+ Novo simulado</button></div>
+            <div class="sim-grid">
+                <div>
+                    <div class="abas" role="tablist" data-alvo="#sim-area"><button type="button" role="tab" data-filtro="todas" class="ativa" aria-selected="true">Todos</button><button type="button" role="tab" data-filtro="agendados" class="" aria-selected="false">Agendados</button><button type="button" role="tab" data-filtro="realizados" class="" aria-selected="false">Realizados</button></div>
+                    <section class="caixa" id="sim-lista">
+                <div class="sim-item" data-grupo="agendados">
+                    <div><h4>Simulado ENEM - Completo</h4><small>90 questões · 22/11</small></div>
+                    <span class="selo-st azul">Agendado</span>
+                </div>
+                <div class="sim-item" data-grupo="agendados">
+                    <div><h4>Simulado FUVEST - 1ª Fase</h4><small>80 questões · 29/11</small></div>
+                    <span class="selo-st azul">Agendado</span>
+                </div>
+                <div class="sim-item" data-grupo="agendados">
+                    <div><h4>Simulado UNIFESP</h4><small>60 questões · 06/12</small></div>
+                    <span class="selo-st azul">Agendado</span>
+                </div>
+                <div class="sim-item" data-grupo="agendados">
+                    <div><h4>Simulado COMVEST</h4><small>50 questões · 13/12</small></div>
+                    <span class="selo-st azul">Agendado</span>
+                </div>
+                <div class="sim-item" data-grupo="agendados">
+                    <div><h4>Simulado VUNESP</h4><small>45 questões · 20/12</small></div>
+                    <span class="selo-st azul">Agendado</span>
+                </div>
+                <div class="sim-item" data-grupo="realizados">
+                    <div><h4>Simulado 08 - Geral</h4><small>45 questões · 27/09 · nota 720</small></div>
+                    <span class="selo-st verde">Realizado</span>
+                </div>
+                <div class="sim-item" data-grupo="realizados">
+                    <div><h4>Simulado 07 - Matemática</h4><small>45 questões · 20/09 · nota 680</small></div>
+                    <span class="selo-st verde">Realizado</span>
+                </div>
+                    </section>
+                </div>
+                <aside class="cartao-azul sim-card">
+                    <h3>Simulado ENEM</h3>
+                    <div class="nota-circulo"><strong>720</strong><small>pontos</small></div>
+                    <div class="areas">
+                        <div><span>Linguagens</span><b>600</b></div><div><span>Matemática</span><b>750</b></div>
+                        <div><span>Ciências da Natureza</span><b>700</b></div><div><span>Ciências Humanas</span><b>730</b></div>
+                        <div><span>Redação</span><b>800</b></div>
+                    </div>
+                    <a href="aluno-notas.html" class="btn-azul btn-claro peq">Ver todos os resultados</a>
+                </aside>
+            </div>
+        </div>
+
+        <dialog class="dialogo" id="dlg-sim">
+            <h3>Novo simulado</h3>
+            <p class="texto">Escolha o formato, a disciplina e o tempo de prova.</p>
+            <form class="form" id="form-sim">
+                <div class="campo"><label for="s-tipo">Tipo</label><select id="s-tipo"><option>Simulado</option><option>Lista de exercícios</option></select></div>
+                <div class="campo"><label for="s-disc">Disciplina</label><select id="s-disc"><option>Geral</option><option>Matemática</option><option>Biologia</option><option>Física</option><option>Química</option><option>Português</option><option>História</option><option>Geografia</option></select></div>
+                <div class="campo"><label for="s-qtd">Nº de questões</label><select id="s-qtd"><option>10</option><option>20</option><option>45</option><option selected>90</option></select></div>
+                <div class="campo"><label for="s-cron">Cronômetro</label><select id="s-cron"><option>Sem limite</option><option>30 minutos</option><option>1 hora</option><option>2 horas</option><option>5h30 (ENEM)</option></select></div>
+                <div class="campo cheio"><label for="s-data">Data (opcional)</label><input type="date" id="s-data"></div>
+                <div class="campo cheio botoes-linha"><button type="button" class="btn btn-sec" data-fechar>Cancelar</button><button type="submit" class="btn">Agendar</button></div>
+            </form>
+        </dialog>
+    </main>
+    <script src="aluno.js"></script>
+    <script>
+document.getElementById('form-sim').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var tipo = document.getElementById('s-tipo').value, disc = document.getElementById('s-disc').value,
+        qtd = document.getElementById('s-qtd').value, cron = document.getElementById('s-cron').value, d = document.getElementById('s-data').value;
+    var item = document.createElement('div'); item.className = 'sim-item'; item.setAttribute('data-grupo', 'agendados');
+    var bloco = document.createElement('div'), h = document.createElement('h4'), s = document.createElement('small'), st = document.createElement('span');
+    h.textContent = tipo + ' - ' + disc;
+    s.textContent = qtd + ' questões · ' + cron + (d ? ' · ' + d.split('-').reverse().slice(0, 2).join('/') : '');
+    st.className = 'selo-st azul'; st.textContent = 'Agendado';
+    bloco.appendChild(h); bloco.appendChild(s); item.appendChild(bloco); item.appendChild(st);
+    document.getElementById('sim-lista').insertBefore(item, document.getElementById('sim-lista').firstChild);
+    document.getElementById('dlg-sim').close(); e.target.reset();
+    document.querySelector('#sim-area .abas button').click();
+});
+    </script>
+</body>
+</html>

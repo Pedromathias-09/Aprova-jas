@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anotações | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class="ativo"><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Anotações</h1>
+                <p>Guarde resumos e lembretes organizados por matéria.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div>
+            <div class="cab"><h2>Anotações</h2><button type="button" class="btn-azul" data-abrir="dlg-nota" id="btn-nova">+ Nova anotação</button></div>
+            <div class="busca-azul"><label for="busca" class="sr-only">Buscar anotações</label><input type="search" id="busca" placeholder="🔍 Buscar anotações..."></div>
+            <div class="notas-grid">
+                <nav class="cartao-azul categorias" id="cats" aria-label="Matérias"></nav>
+                <section class="cartao-azul" id="painel" aria-live="polite"></section>
+            </div>
+        </div>
+
+        <dialog class="dialogo" id="dlg-nota">
+            <h3 id="dn-titulo">Nova anotação</h3>
+            <form class="form" id="form-nota">
+                <div class="campo"><label for="n-mat">Matéria</label><select id="n-mat"></select></div>
+                <div class="campo"><label for="n-tit">Título</label><input type="text" id="n-tit" required></div>
+                <div class="campo cheio"><label for="n-txt">Anotação</label><textarea id="n-txt" rows="8" required></textarea></div>
+                <div class="campo cheio botoes-linha"><button type="button" class="btn btn-sec" data-fechar>Cancelar</button><button type="submit" class="btn">Salvar</button></div>
+            </form>
+        </dialog>
+    </main>
+    <script src="aluno.js"></script>
+    <script>
+Auth.quando(function () {
+    var MATS = ['Matemática', 'Física', 'Química', 'Biologia', 'Redação', 'História', 'Geografia', 'Inglês'];
+    var chave = AJ.chave('anotacoes');
+    var notas = AJ.ler(chave, null) || [
+        { id: 1, mat: 'Física', tit: 'Leis de Newton - Resumo', txt: '1. Primeira Lei de Newton (Lei da Inércia)\nTodo corpo tende a manter seu estado de repouso ou de movimento retilíneo uniforme a menos que uma força externa seja aplicada sobre ele.\n\n2. Segunda Lei de Newton (Princípio Fundamental da Dinâmica)\nA força resultante é igual ao produto da massa pela aceleração: F = m · a\n\n3. Terceira Lei de Newton (Lei da Ação e Reação)\nPara toda força de ação, existe uma força de reação de mesma intensidade e direção, mas em sentido oposto.' },
+        { id: 2, mat: 'Redação', tit: 'Proposta de intervenção', txt: 'Todo texto precisa de cinco elementos: agente, ação, meio, finalidade e detalhamento.' },
+        { id: 3, mat: 'Matemática', tit: 'Fórmula de Bhaskara', txt: 'x = (-b ± √Δ) / 2a, com Δ = b² - 4ac.\nΔ > 0: duas raízes reais; Δ = 0: uma raiz; Δ < 0: sem raízes reais.' },
+        { id: 4, mat: 'Biologia', tit: 'Mitose x meiose', txt: 'Mitose: 2 células idênticas (crescimento e reparo).\nMeiose: 4 células com metade dos cromossomos (gametas).' }
+    ];
+    var atualMat = 'Física', editando = null;
+    var $ = function (id) { return document.getElementById(id); };
+    var sel = $('n-mat'); MATS.forEach(function (m) { var o = document.createElement('option'); o.textContent = m; sel.appendChild(o); });
+    function salvar() { AJ.gravar(chave, notas); }
+
+    function categorias() {
+        var c = $('cats'); c.innerHTML = '';
+        MATS.forEach(function (m) {
+            var n = notas.filter(function (x) { return x.mat === m; }).length;
+            var b = document.createElement('button'); b.type = 'button'; b.className = m === atualMat && !$('busca').value ? 'ativa' : '';
+            b.appendChild(document.createTextNode(m));
+            var s = document.createElement('small'); s.textContent = n + (n === 1 ? ' anotação' : ' anotações'); b.appendChild(s);
+            b.addEventListener('click', function () { atualMat = m; $('busca').value = ''; desenhar(); });
+            c.appendChild(b);
+        });
+    }
+    function desenhar() {
+        categorias();
+        var q = $('busca').value.trim().toLowerCase(), p = $('painel'); p.innerHTML = '';
+        var lista = notas.filter(function (n) { return q ? (n.tit + ' ' + n.txt).toLowerCase().indexOf(q) >= 0 : n.mat === atualMat; });
+        if (!lista.length) { p.textContent = q ? 'Nenhuma anotação encontrada.' : 'Ainda não há anotações em ' + atualMat + '. Clique em “+ Nova anotação”.'; return; }
+        lista.forEach(function (n) {
+            var box = document.createElement('article'), topo = document.createElement('div'), tit = document.createElement('strong'), acoes = document.createElement('span'), tx = document.createElement('p');
+            box.className = 'nota'; topo.className = 'nota-topo';
+            tit.textContent = (q ? n.mat + ' · ' : '') + n.tit.toUpperCase();
+            var ed = document.createElement('button'); ed.type = 'button'; ed.textContent = '✏️'; ed.setAttribute('aria-label', 'Editar');
+            var ex = document.createElement('button'); ex.type = 'button'; ex.textContent = '🗑️'; ex.setAttribute('aria-label', 'Excluir');
+            ed.addEventListener('click', function () { editando = n.id; $('dn-titulo').textContent = 'Editar anotação'; sel.value = n.mat; $('n-tit').value = n.tit; $('n-txt').value = n.txt; $('dlg-nota').showModal(); });
+            ex.addEventListener('click', function () { if (confirm('Excluir esta anotação?')) { notas = notas.filter(function (x) { return x.id !== n.id; }); salvar(); desenhar(); } });
+            acoes.appendChild(ed); acoes.appendChild(ex); topo.appendChild(tit); topo.appendChild(acoes);
+            tx.textContent = n.txt; box.appendChild(topo); box.appendChild(tx); p.appendChild(box);
+        });
+    }
+    $('btn-nova').addEventListener('click', function () { editando = null; $('dn-titulo').textContent = 'Nova anotação'; $('form-nota').reset(); sel.value = atualMat; });
+    $('busca').addEventListener('input', desenhar);
+    $('form-nota').addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (editando) { var n = notas.filter(function (x) { return x.id === editando; })[0]; n.mat = sel.value; n.tit = $('n-tit').value.trim(); n.txt = $('n-txt').value; }
+        else notas.push({ id: Date.now(), mat: sel.value, tit: $('n-tit').value.trim(), txt: $('n-txt').value });
+        atualMat = sel.value; $('busca').value = ''; salvar(); $('dlg-nota').close(); desenhar();
+    });
+    desenhar();
+});
+    </script>
+</body>
+</html>

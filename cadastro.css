@@ -1,0 +1,181 @@
+/* =========================
+   CRIAR CONTA
+========================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #11182e;
+    background: white;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.logo-img { height: 48px; width: auto; display: block; }
+
+/* ---------- Lado esquerdo ---------- */
+.lado {
+    padding: 60px 50px 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background: linear-gradient(135deg, #2d3fd3, #1a2087);
+    overflow: hidden;
+}
+
+.lado h2 { max-width: 520px; font-size: 42px; line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px; }
+.lado h2 span { color: #ffc94d; }
+.lado > p { max-width: 480px; font-size: 19px; line-height: 1.6; opacity: 0.92; margin-bottom: 28px; }
+
+.vantagens { list-style: none; display: grid; gap: 12px; font-size: 17px; font-weight: bold; }
+
+.lado-img {
+    width: 100%;
+    max-width: 480px;
+    margin-top: auto;
+    padding-top: 30px;
+    display: block;
+}
+
+/* ---------- Formulário ---------- */
+.form-area {
+    padding: 40px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-caixa { width: 100%; max-width: 560px; }
+
+.logo-link { display: inline-block; margin-bottom: 28px; }
+
+.form-caixa h1 { font-size: 32px; margin-bottom: 8px; }
+.sub { margin-bottom: 26px; color: #526986; }
+
+.grade { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.campo.cheio { grid-column: 1 / -1; }
+
+label { display: block; }
+.campo label, .rotulo { margin-bottom: 7px; font-weight: bold; font-size: 14px; }
+
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="password"], input[type="date"], select {
+    width: 100%;
+    height: 52px;
+    padding: 0 14px;
+    border: 1px solid #dfe3ea;
+    border-radius: 12px;
+    background: #f8fafc;
+    font-family: inherit;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2d3fd3;
+    background: white;
+    box-shadow: 0 0 0 4px #e8edff;
+}
+
+/* ---------- Planos (seleção só com CSS) ---------- */
+.rotulo { margin-top: 24px; }
+
+.planos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+
+.plano-opcao { cursor: pointer; }
+.plano-opcao input { position: absolute; opacity: 0; pointer-events: none; }
+
+.plano-card {
+    height: 100%;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 2px solid #e0e4e9;
+    border-radius: 16px;
+    transition: 0.2s;
+}
+
+.plano-card strong { font-size: 18px; }
+.plano-card em { font-style: normal; font-size: 22px; font-weight: bold; color: #2d3fd3; }
+.plano-card small { color: #526986; line-height: 1.4; }
+
+.selo {
+    margin-left: 6px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: #e8edff;
+    color: #2d3fd3;
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.plano-opcao:hover .plano-card { border-color: #a9b6ff; }
+
+.plano-opcao input:checked + .plano-card {
+    border-color: #2d3fd3;
+    background: #f3f6ff;
+    box-shadow: 0 10px 25px rgba(45, 63, 211, 0.12);
+}
+
+.plano-opcao input:focus-visible + .plano-card { box-shadow: 0 0 0 4px #e8edff; }
+
+/* ---------- Termos e botão ---------- */
+.termos {
+    margin-bottom: 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #526986;
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.termos input { width: 18px; height: 18px; margin-top: 2px; accent-color: #2d3fd3; }
+.termos a { color: #2d3fd3; font-weight: bold; }
+
+.btn-criar {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 14px;
+    background: #2d3fd3;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-criar:hover { background: #1a2087; transform: translateY(-2px); }
+
+.rodape-form { margin-top: 22px; text-align: center; color: #526986; font-size: 15px; }
+.rodape-form a { color: #2d3fd3; font-weight: bold; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 950px) {
+    body { grid-template-columns: 1fr; }
+    .lado { padding: 40px 28px 0; }
+    .lado h2 { font-size: 32px; }
+    .lado-img { max-width: 340px; margin: 0 auto; }
+}
+
+@media (max-width: 560px) {
+    .grade, .planos { grid-template-columns: 1fr; }
+}
+
+.erro { margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; background: #fdecec; color: #c62828; font-size: 14px; line-height: 1.5; }
+
+
+/* ---------- Botão de olho nos campos de senha ---------- */
+.campo-senha { position: relative; }
+.campo-senha input { padding-right: 52px; }
+.ver-senha { position: absolute; top: 0; right: 6px; bottom: 0; width: 44px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; color: #66758b; cursor: pointer; border-radius: 10px; }
+.ver-senha:hover { color: #11182e; }
+.ver-senha:focus-visible { outline: 3px solid #a9b6ff; outline-offset: -3px; }

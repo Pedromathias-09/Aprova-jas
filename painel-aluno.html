@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Aluno | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class="ativo"><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Olá, Aluno(a)!</h1>
+                <p>Este é o seu painel no Aprova Já.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+
+
+        <div class="uma">
+            <section class="caixa" id="plano-caixa">
+                <div class="plano-topo">
+                    <div>
+                        <h3>🎯 Seu plano de estudos</h3>
+                        <ul class="chips" id="plano-chips"></ul>
+                        <span class="fb-nivel" id="plano-nivel"></span>
+                        <p class="fb-texto" id="plano-feedback"></p>
+                        <p style="margin-top:14px"><a href="questionario.html" class="btn btn-peq btn-sec">Refazer questionário</a></p>
+                    </div>
+                    <div>
+                        <h3>📚 Prioridades da semana</h3>
+                        <div id="plano-prio"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="uma">
+            <section class="caixa">
+                <h3>📅 Cronograma da semana</h3>
+                <div class="cron-grid" id="cron-grid"></div>
+                <div class="legenda-cron">
+                    <span><i style="background:#2d3fd3"></i>Estudo</span><span><i style="background:#f5a623"></i>Reforço (matéria que precisa de atenção)</span>
+                    <span><i style="background:#ffc94d"></i>Simulado</span><span><i style="background:#6f7df0"></i>Revisão</span>
+                </div>
+            </section>
+        </div>
+
+        <div class="stats"><div class="stat"><small>Horas estudadas</small><strong>42h</strong></div><div class="stat"><small>Meta semanal</small><strong>87%</strong></div><div class="stat"><small>Simulados feitos</small><strong>8</strong></div><div class="stat"><small>Redações enviadas</small><strong>3</strong></div></div>
+
+        <div class="duas">
+            <section class="caixa"><h3>Desempenho por matéria</h3><div class="barra-item"><div><span>Matemática</span><b>78%</b></div><div class="trilho"><span style="width:78%"></span></div></div><div class="barra-item"><div><span>Biologia</span><b>81%</b></div><div class="trilho"><span style="width:81%"></span></div></div><div class="barra-item"><div><span>Física</span><b>52%</b></div><div class="trilho"><span style="width:52%"></span></div></div><div class="barra-item"><div><span>Redação</span><b>64%</b></div><div class="trilho"><span style="width:64%"></span></div></div></section>
+            <section class="caixa"><h3>⏰ Hoje no seu plano</h3><ul class="lista" id="hoje-lista"></ul></section>
+        </div>
+
+        <div class="uma">
+            <section class="caixa"><h3>🏆 Últimas notas e feedbacks</h3><ul class="lista"><li><span class="tag">Simulado 08</span><div><strong>Corrigido por IA</strong></div><em>720</em></li><li><span class="tag">Redação 03</span><div><strong>Corrigida por professor</strong></div><em>840</em></li><li><span class="tag">Lista de Química</span><div><strong>Corrigida por IA</strong></div><em>7/10</em></li></ul></section>
+        </div>
+
+        <div class="acoes"><article class="acao"><div class="acao-icone">📝</div><h3>Gerar simulado</h3><p>Escolha a disciplina, ative o cronômetro e comece.</p><a href="aluno-simulados.html" class="btn">Novo simulado</a></article><article class="acao"><div class="acao-icone">✍️</div><h3>Enviar redação</h3><p>Envie por texto ou por foto e receba o feedback.</p><a href="aluno-redacoes.html" class="btn">Enviar redação</a></article><article class="acao"><div class="acao-icone">💬</div><h3>Tirar dúvida</h3><p>Pergunte a um professor ou consulte o banco de respostas.</p><a href="aluno-duvidas.html" class="btn">Enviar dúvida</a></article></div>
+    </main>
+    <script src="plano.js"></script>
+    <script>
+    Auth.quando(function (u) {
+        var q = u.extra && u.extra.questionario; if (!q) return;
+        var $ = function (id) { return document.getElementById(id); };
+        var plano = Plano.gerar(q.resp, q.diag), R = Plano.ROTULOS;
+        function chip(t) { var li = document.createElement('li'); li.textContent = t; $('plano-chips').appendChild(li); }
+        chip('Foco: ' + q.resp.foco); chip(R.objetivo[plano.objetivo]); chip(R.horas[q.resp.horas]); chip('Período: ' + R.horario[q.resp.horario]); chip(plano.horasSemana + 'h por semana');
+        $('plano-nivel').textContent = q.nivel + ' · ' + q.acertos + ' de 9 no diagnóstico';
+        $('plano-feedback').textContent = q.feedback;
+
+        plano.prioridades.forEach(function (p) {
+            var d = document.createElement('div'); d.className = 'prio';
+            var a = document.createElement('span'); a.textContent = p.mat;
+            if (p.reforco) { var r = document.createElement('span'); r.className = 'reforco-tag'; r.textContent = 'reforço'; a.appendChild(r); }
+            var tr = document.createElement('div'); tr.className = 'trilho'; var s = document.createElement('span'); s.style.width = Math.min(100, p.pct * 4) + '%'; tr.appendChild(s);
+            var h = document.createElement('small'); h.textContent = (Math.round(p.minutos / 6) / 10) + 'h';
+            d.appendChild(a); d.appendChild(tr); d.appendChild(h); $('plano-prio').appendChild(d);
+        });
+
+        var hoje = (new Date().getDay() + 6) % 7;                       // Seg = 0
+        function link(b) { return 'aluno-conteudos.html?materia=' + encodeURIComponent(b.mat) + '&conteudo=' + encodeURIComponent(b.conteudo) + '#banco'; }
+        function bloco(b) {
+            var el = document.createElement(b.tipo === 'estudo' ? 'a' : 'div'); el.className = 'bloco ' + (b.tipo === 'estudo' ? (b.reforco ? 'reforco' : '') : b.tipo);
+            if (b.tipo === 'estudo') { el.href = link(b); el.title = 'Treinar este conteúdo no banco de questões'; }
+            var t = document.createElement('time'), m = document.createElement('strong'), tp = document.createElement('span');
+            t.textContent = b.ini + ' às ' + b.fim; m.textContent = b.mat; tp.textContent = b.topico;
+            el.appendChild(t); el.appendChild(m); el.appendChild(tp); return el;
+        }
+        plano.dias.forEach(function (d, i) {
+            var c = document.createElement('div'); c.className = 'cron-dia' + (i === hoje ? ' hoje' : '');
+            var h = document.createElement('h4'); h.textContent = d.dia;
+            if (i === hoje) { var e = document.createElement('em'); e.textContent = 'hoje'; h.appendChild(e); }
+            c.appendChild(h); d.blocos.forEach(function (b) { c.appendChild(bloco(b)); }); $('cron-grid').appendChild(c);
+        });
+        plano.dias[hoje].blocos.forEach(function (b) {
+            var li = document.createElement('li'), tag = document.createElement('span'), div = document.createElement('div'), em = document.createElement('em');
+            tag.className = 'tag'; tag.textContent = b.ini; div.innerHTML = ''; var st = document.createElement(b.tipo === 'estudo' ? 'a' : 'strong'); st.textContent = b.mat + ': ' + b.topico; if (b.tipo === 'estudo') { st.href = link(b); st.style.fontWeight = 'bold'; } div.appendChild(st);
+            em.textContent = b.fim; li.appendChild(tag); li.appendChild(div); li.appendChild(em); $('hoje-lista').appendChild(li);
+        });
+        if (!plano.dias[hoje].blocos.length) { var v = document.createElement('li'); v.textContent = 'Hoje é dia de descanso. Aproveite!'; $('hoje-lista').appendChild(v); }
+    });
+    </script>
+</body>
+</html>

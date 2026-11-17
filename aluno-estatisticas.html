@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class="ativo"><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Estatísticas</h1>
+                <p>Acompanhe suas horas de estudo, questões, simulados e redações.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div id="est-area">
+            <div class="abas" role="tablist" data-alvo="#est-area"><button type="button" role="tab" data-aba="total" class="ativa" aria-selected="true">Total</button><button type="button" role="tab" data-aba="materias" class="" aria-selected="false">Matérias</button><button type="button" role="tab" data-aba="simulados" class="" aria-selected="false">Simulados</button><button type="button" role="tab" data-aba="questoes" class="" aria-selected="false">Questões</button><button type="button" role="tab" data-aba="redacao" class="" aria-selected="false">Redação</button></div>
+            <div data-painel="total">
+                <div class="kpis">
+                    <div class="kpi"><small>Horas estudadas</small><strong>128h</strong><small>este mês</small></div>
+                    <div class="kpi"><small>Questões resolvidas</small><strong>1.245</strong><small>este mês</small></div>
+                    <div class="kpi"><small>Simulados realizados</small><strong>3</strong><small>este mês</small></div>
+                </div>
+                <section class="grafico-caixa">
+                    <div class="grafico-topo">
+                        <h3>🕒 Horas de estudo por semana</h3>
+                        <div class="legenda"><span><i class="c-baixo"></i>Baixo</span><span><i class="c-medio"></i>Médio</span><span><i class="c-alto"></i>Alto</span></div>
+                    </div>
+                    <div class="grafico"><div class="eixo-y" aria-hidden="true"><span>18</span><span>16</span><span>14</span><span>12</span><span>10</span><span>8</span><span>6</span><span>4</span><span>2</span><span>0</span></div><div class="barras" role="img" aria-label="Horas de estudo nas últimas 8 semanas: 5, 7, 8, 10, 9, 12, 13 e 15 horas"><div class="col"><div class="barra c-baixo" style="height:27.8%"><b>5h</b></div></div><div class="col"><div class="barra c-baixo" style="height:38.9%"><b>7h</b></div></div><div class="col"><div class="barra c-baixo" style="height:44.4%"><b>8h</b></div></div><div class="col"><div class="barra c-medio" style="height:55.6%"><b>10h</b></div></div><div class="col"><div class="barra c-baixo" style="height:50.0%"><b>9h</b></div></div><div class="col"><div class="barra c-medio" style="height:66.7%"><b>12h</b></div></div><div class="col"><div class="barra c-alto" style="height:72.2%"><b>13h</b></div></div><div class="col"><div class="barra c-alto" style="height:83.3%"><b>15h</b></div></div></div></div>
+                    <div class="rotulos" aria-hidden="true"><span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>S6</span><span>S7</span><span>S8</span></div>
+                </section>
+                <div class="destaques">
+                    <div class="destaque"><small>Matéria com maior evolução</small><div><strong>Matemática</strong><em>+25%</em></div></div>
+                    <div class="destaque"><small>Ponto de atenção</small><div><strong>Física</strong></div><small>Precisa de maior foco</small></div>
+                </div>
+            </div>
+            <div data-painel="materias" hidden><section class="caixa"><h3>📚 Aproveitamento por matéria</h3><div class="barra-item"><div><span>Matemática</span><b>78%</b></div><div class="trilho"><span style="width:78%"></span></div></div><div class="barra-item"><div><span>Biologia</span><b>81%</b></div><div class="trilho"><span style="width:81%"></span></div></div><div class="barra-item"><div><span>Física</span><b>52%</b></div><div class="trilho"><span style="width:52%"></span></div></div><div class="barra-item"><div><span>Química</span><b>70%</b></div><div class="trilho"><span style="width:70%"></span></div></div><div class="barra-item"><div><span>Português</span><b>74%</b></div><div class="trilho"><span style="width:74%"></span></div></div><div class="barra-item"><div><span>História</span><b>63%</b></div><div class="trilho"><span style="width:63%"></span></div></div></section></div>
+            <div data-painel="simulados" hidden><section class="caixa"><h3>📝 Simulados realizados</h3><div class="rolagem"><table class="tabela"><thead><tr><th>Simulado</th><th>Data</th><th>Nota</th></tr></thead><tbody><tr><td>Simulado 08 - Geral</td><td>27/09</td><td>720</td></tr><tr><td>Simulado 07 - Matemática</td><td>20/09</td><td>680</td></tr><tr><td>Lista de Química</td><td>24/09</td><td>7/10</td></tr></tbody></table></div></section></div>
+            <div data-painel="questoes" hidden><section class="caixa"><h3>❓ Acertos por área</h3><div class="barra-item"><div><span>Linguagens</span><b>68%</b></div><div class="trilho"><span style="width:68%"></span></div></div><div class="barra-item"><div><span>Matemática</span><b>72%</b></div><div class="trilho"><span style="width:72%"></span></div></div><div class="barra-item"><div><span>Ciências da Natureza</span><b>61%</b></div><div class="trilho"><span style="width:61%"></span></div></div><div class="barra-item"><div><span>Ciências Humanas</span><b>75%</b></div><div class="trilho"><span style="width:75%"></span></div></div></section></div>
+            <div data-painel="redacao" hidden><section class="caixa"><h3>✍️ Evolução nas redações</h3><div class="barra-item"><div><span>Redação 02 (760)</span><b>76%</b></div><div class="trilho"><span style="width:76%"></span></div></div><div class="barra-item"><div><span>Redação 03 (840)</span><b>84%</b></div><div class="trilho"><span style="width:84%"></span></div></div><p class="texto">Sua nota subiu 80 pontos entre as duas últimas redações corrigidas.</p></section></div>
+        </div>
+    </main>
+    <script src="aluno.js"></script>
+</body>
+</html>

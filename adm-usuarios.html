@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="adm">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-adm">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">⚙️ Área do Administrador</span>
+        <nav><a href="painel-adm.html" class=""><span>📊</span>Visão geral</a><a href="adm-usuarios.html" class="ativo"><span>👥</span>Usuários</a><a href="adm-conteudo.html" class=""><span>🗂️</span>Conteúdo</a><a href="adm-financeiro.html" class=""><span>💳</span>Financeiro</a><a href="adm-relatorios.html" class=""><span>📈</span>Relatórios</a><a href="adm-permissoes.html" class=""><span>🔑</span>Permissões</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Usuários</h1>
+                <p>Cadastre a equipe, bloqueie acessos e acompanhe os alunos.</p>
+            </div>
+            <div class="avatar">⚙️</div>
+        </header>
+        <div class="duas">
+            <section class="caixa">
+                <h3>➕ Cadastrar usuário</h3>
+                <form class="form" id="form-novo" action="#">
+                    <div class="campo"><label for="n-nome">Nome completo</label><input type="text" id="n-nome" required></div>
+                    <div class="campo"><label for="n-email">E-mail</label><input type="email" id="n-email" autocomplete="off" required></div>
+                    <div class="campo"><label for="n-papel">Perfil</label>
+                        <select id="n-papel"><option value="professor">Professor</option><option value="aluno">Aluno</option><option value="adm">Administrador</option></select></div>
+                    <div class="campo"><label for="n-senha">Senha provisória (opcional)</label><input type="text" id="n-senha" autocomplete="off" placeholder="Em branco = gerar automática"></div>
+                    <div class="campo cheio"><button type="submit" class="btn">Cadastrar</button></div>
+                </form>
+                <div class="aviso" id="resultado" hidden></div>
+                <p class="msg err" id="erro-novo" role="alert" hidden></p>
+                <p class="texto" style="margin-top:12px">A pessoa recebe a senha provisória e é obrigada a criar uma senha própria no primeiro acesso. Só o administrador primário cria outros administradores.</p>
+            </section>
+            <section class="caixa">
+                <h3>🔎 Buscar</h3>
+                <form class="form" id="form-busca" action="#">
+                    <div class="campo"><label for="b-texto">Nome ou e-mail</label><input type="text" id="b-texto" placeholder="Buscar..."></div>
+                    <div class="campo"><label for="b-papel">Filtrar por perfil</label>
+                        <select id="b-papel"><option value="">Todos</option><option value="aluno">Aluno</option><option value="professor">Professor</option><option value="adm">Administrador</option></select></div>
+                </form>
+            </section>
+        </div>
+        <div class="uma">
+            <section class="caixa">
+                <h3>👥 Usuários</h3>
+                <p class="msg err" id="erro-acao" role="alert" hidden></p>
+                <div class="rolagem"><table class="tabela"><thead><tr><th>Nome</th><th>Perfil</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tbody"></tbody></table></div>
+            </section>
+        </div>
+    </main>
+    <script>
+    Auth.quando(function (eu) {
+        var NOMES = { aluno: 'Aluno', professor: 'Professor', adm: 'Administrador' };
+        var $ = function (id) { return document.getElementById(id); };
+
+        function celula(tr, conteudo) { var td = document.createElement('td'); if (conteudo) td.appendChild(conteudo); tr.appendChild(td); return td; }
+        function botao(texto, fn) { var b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-peq btn-sec'; b.textContent = texto; b.addEventListener('click', fn); b.style.marginRight = '6px'; return b; }
+
+        function desenhar() {
+            var q = $('b-texto').value.trim().toLowerCase(), f = $('b-papel').value, tb = $('tbody');
+            tb.innerHTML = '';
+            Auth.listar().filter(function (u) {
+                return (!f || u.papel === f) && (!q || u.nome.toLowerCase().indexOf(q) >= 0 || u.email.indexOf(q) >= 0);
+            }).forEach(function (u) {
+                var tr = document.createElement('tr'), td = celula(tr);
+                td.textContent = u.nome; var s = document.createElement('small'); s.textContent = u.email; td.appendChild(s);
+                celula(tr).textContent = NOMES[u.papel] + (u.primario ? ' (primário)' : '');
+                var st = document.createElement('span');
+                st.className = 'badge ' + (!u.ativo ? 'bad' : u.trocar ? 'pend' : 'ok');
+                st.textContent = !u.ativo ? 'Bloqueado' : u.trocar ? '1º acesso pendente' : 'Ativo';
+                celula(tr, st);
+                var acoes = celula(tr);
+                var proprio = u.email === eu.email, protegido = u.primario || (u.papel === 'adm' && !eu.primario);
+                if (!proprio && !protegido) {
+                    acoes.appendChild(botao(u.ativo ? 'Bloquear' : 'Reativar', function () { agir(Auth.alternarAtivo(u.email)); }));
+                    acoes.appendChild(botao('Excluir', function () {
+                        if (confirm('Excluir ' + u.nome + '? Essa ação não pode ser desfeita.')) agir(Auth.excluir(u.email));
+                    }));
+                } else { acoes.textContent = '—'; }
+                tb.appendChild(tr);
+            });
+        }
+        function agir(r) { var e = $('erro-acao'); e.hidden = r.ok; if (!r.ok) e.textContent = r.erro; desenhar(); }
+
+        $('form-novo').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var err = $('erro-novo'), res = $('resultado'); err.hidden = true; res.hidden = true;
+            Auth.criarUsuario({ nome: $('n-nome').value, email: $('n-email').value, papel: $('n-papel').value, senha: $('n-senha').value.trim() }).then(function (r) {
+                if (!r.ok) { err.textContent = r.erro; err.hidden = false; return; }
+                res.innerHTML = '';
+                res.appendChild(document.createTextNode('Usuário criado. Entregue esta senha provisória (ela aparece só agora): '));
+                var c = document.createElement('code'); c.textContent = r.senha; res.appendChild(c);
+                res.hidden = false; $('form-novo').reset(); desenhar();
+            });
+        });
+        $('b-texto').addEventListener('input', desenhar);
+        $('b-papel').addEventListener('change', desenhar);
+        $('form-busca').addEventListener('submit', function (e) { e.preventDefault(); });
+        if (!eu.primario) { var op = $('n-papel').querySelector('option[value=adm]'); op.disabled = true; }
+        desenhar();
+    });
+    </script>
+</body>
+</html>

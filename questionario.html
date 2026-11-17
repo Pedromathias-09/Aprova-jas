@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte seu plano de estudos | Aprova Já</title>
+    <link rel="stylesheet" href="questionario.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <header class="q-topo">
+        <img src="img/logo.png" alt="Aprova Já" class="logo-img">
+        <span id="q-etapa" class="q-etapa-topo">Etapa 1 de 2</span>
+    </header>
+
+    <main class="q-main">
+        <div class="q-progresso" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="q-barra"></span></div>
+
+        <!-- Perguntas e introdução da etapa 2 -->
+        <section class="q-card" id="tela-pergunta">
+            <p class="q-sub" id="q-sub"></p>
+            <h1 id="q-titulo"></h1>
+            <p class="q-texto" id="q-texto" hidden></p>
+            <fieldset class="q-opcoes" id="q-opcoes"><legend class="sr-only" id="q-legenda"></legend></fieldset>
+            <div class="q-nav">
+                <button type="button" class="q-btn q-btn-sec" id="q-voltar">← Voltar</button>
+                <button type="button" class="q-btn" id="q-proxima" disabled>Próxima →</button>
+            </div>
+        </section>
+
+        <!-- Feedback e resumo do plano -->
+        <section class="q-card q-feedback" id="tela-feedback" hidden>
+            <p class="q-sub">Questionário concluído 🎉</p>
+            <h1 id="f-titulo">Seu feedback</h1>
+            <div class="f-topo">
+                <div class="f-nota"><strong id="f-acertos">0</strong><small>de 9</small></div>
+                <div><span class="f-nivel" id="f-nivel"></span><p class="f-texto" id="f-texto"></p></div>
+            </div>
+            <h2>Seu desempenho por matéria</h2>
+            <ul class="f-materias" id="f-materias"></ul>
+            <h2>Seu plano</h2>
+            <ul class="f-chips" id="f-chips"></ul>
+            <div class="q-nav q-nav-fim">
+                <button type="button" class="q-btn q-btn-sec" id="f-refazer">Refazer questionário</button>
+                <a href="painel-aluno.html" class="q-btn" id="f-ir">Ver meu plano de estudos →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="plano.js"></script>
+    <script src="questionario.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dúvidas | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class="ativo"><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Dúvidas</h1>
+                <p>Envie perguntas aos professores e consulte o banco de dúvidas já respondidas.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div class="duas"><section class="caixa "><h3>💬 Nova dúvida</h3><form class="form" action="#"><div class="campo"><label for="c8">Disciplina</label><select id="c8"><option>Matemática</option><option>Biologia</option><option>Física</option><option>Química</option><option>Português</option><option>História</option><option>Geografia</option></select></div><div class="campo"><label for="c9">Professor</label><select id="c9"><option>Qualquer professor</option><option>Prof. Carlos</option><option>Profa. Marina</option></select></div><div class="campo cheio"><label for="c10">Sua dúvida</label><textarea id="c10" rows="5" placeholder="Descreva sua dúvida..."></textarea></div><div class="campo cheio"><button type="submit" class="btn">Enviar dúvida</button></div></form></section><section class="caixa "><h3>📖 Banco de perguntas respondidas</h3><div class="qa"><details><summary>Como resolver equação do 2º grau?</summary><p>Use a fórmula de Bhaskara: calcule o delta e depois as raízes.</p></details><details><summary>Qual a diferença entre mitose e meiose?</summary><p>A mitose gera 2 células idênticas; a meiose gera 4 células com metade dos cromossomos.</p></details><details><summary>Como fazer uma boa proposta de intervenção?</summary><p>Inclua agente, ação, meio, finalidade e detalhamento.</p></details></div></section></div>
+    </main>
+</body>
+</html>

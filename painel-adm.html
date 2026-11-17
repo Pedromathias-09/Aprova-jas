@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="adm">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrador | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-adm">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">⚙️ Área do Administrador</span>
+        <nav><a href="painel-adm.html" class="ativo"><span>📊</span>Visão geral</a><a href="adm-usuarios.html" class=""><span>👥</span>Usuários</a><a href="adm-conteudo.html" class=""><span>🗂️</span>Conteúdo</a><a href="adm-financeiro.html" class=""><span>💳</span>Financeiro</a><a href="adm-relatorios.html" class=""><span>📈</span>Relatórios</a><a href="adm-permissoes.html" class=""><span>🔑</span>Permissões</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Olá, Administrador(a)!</h1>
+                <p>Este é o seu painel no Aprova Já.</p>
+            </div>
+            <div class="avatar">⚙️</div>
+        </header>
+
+        <div class="stats"><div class="stat"><small>Alunos ativos</small><strong>50 mil</strong></div><div class="stat"><small>Professores</small><strong>128</strong></div><div class="stat"><small>Assinaturas ativas</small><strong>8,2 mil</strong></div><div class="stat"><small>Inadimplência</small><strong>3,1%</strong></div></div>
+
+        <div class="duas">
+            <section class="caixa"><h3>Taxa de conclusão dos cursos</h3><div class="barra-item"><div><span>Matemática</span><b>68%</b></div><div class="trilho"><span style="width:68%"></span></div></div><div class="barra-item"><div><span>Linguagens</span><b>72%</b></div><div class="trilho"><span style="width:72%"></span></div></div><div class="barra-item"><div><span>Ciências da Natureza</span><b>59%</b></div><div class="trilho"><span style="width:59%"></span></div></div><div class="barra-item"><div><span>Humanas</span><b>64%</b></div><div class="trilho"><span style="width:64%"></span></div></div></section>
+            <section class="caixa"><h3>👥 Usuários recentes</h3><ul class="lista"><li><span class="tag">Ana Lima</span><div><strong>Aluno</strong></div><em>Ativo</em></li><li><span class="tag">Prof. Carlos</span><div><strong>Professor</strong></div><em>Ativo</em></li><li><span class="tag">Marina Souza</span><div><strong>Coordenador</strong></div><em>Pendente</em></li><li><span class="tag">Rafael Dias</span><div><strong>Suporte</strong></div><em>Ativo</em></li></ul></section>
+        </div>
+
+        <div class="uma">
+            <section class="caixa"><h3>💳 Financeiro</h3><ul class="lista"><li><span class="tag">Novas matrículas</span><div><strong>Este mês</strong></div><em>+420</em></li><li><span class="tag">Cancelamentos</span><div><strong>Este mês</strong></div><em>-37</em></li><li><span class="tag">Inadimplentes</span><div><strong>Em aberto</strong></div><em>254</em></li></ul></section>
+        </div>
+
+        <div class="acoes"><article class="acao"><div class="acao-icone">👥</div><h3>Gerenciar usuários</h3><p>Cadastre, edite ou exclua alunos, professores e admins.</p><a href="adm-usuarios.html" class="btn">Abrir usuários</a></article><article class="acao"><div class="acao-icone">🗂️</div><h3>Gerenciar conteúdo</h3><p>Cursos, módulos, trilhas e calendário de aulas ao vivo.</p><a href="adm-conteudo.html" class="btn">Abrir conteúdo</a></article><article class="acao"><div class="acao-icone">🔑</div><h3>Permissões e acesso</h3><p>Defina papéis e faça reset de senha. O admin primário acessa os demais admins.</p><a href="adm-permissoes.html" class="btn">Abrir permissões</a></article></div>
+    </main>
+</body>
+</html>

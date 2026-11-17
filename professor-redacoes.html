@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="professor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correção de redações | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-professor">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">👩‍🏫 Área do Professor</span>
+        <nav><a href="painel-professor.html" class=""><span>📊</span>Visão geral</a><a href="professor-conteudos.html" class=""><span>🗂️</span>Meus conteúdos</a><a href="professor-estudio.html" class=""><span>🎥</span>Estúdio ao vivo</a><a href="professor-redacoes.html" class="ativo"><span>✅</span>Correção de redações</a><a href="professor-duvidas.html" class=""><span>💬</span>Dúvidas dos alunos</a><a href="professor-metricas.html" class=""><span>📈</span>Métricas</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Correção de redações</h1>
+                <p>Avalie por competências e envie feedback escrito ao aluno.</p>
+            </div>
+            <div class="avatar">👩‍🏫</div>
+        </header>
+        <div class="duas"><section class="caixa "><h3>📥 Fila de correção</h3><div class="rolagem"><table class="tabela"><thead><tr><th>Aluno</th><th>Tema</th><th>Status</th></tr></thead><tbody><tr><td>Ana L.</td><td>Saúde mental</td><td><span class="badge pend">Pendente</span></td></tr><tr><td>Bruno M.</td><td>Fake news</td><td><span class="badge pend">Pendente</span></td></tr><tr><td>Carla S.</td><td>Meio ambiente</td><td><span class="badge ok">Corrigida</span></td></tr></tbody></table></div></section><section class="caixa "><h3>✅ Corrigir: Ana L.</h3><form class="form" action="#"><div class="campo"><label for="c23">Competência 1: norma culta</label><select id="c23"><option>200</option><option>160</option><option>120</option><option>80</option><option>40</option><option>0</option></select></div><div class="campo"><label for="c24">Competência 2: tema e estrutura</label><select id="c24"><option>200</option><option>160</option><option>120</option><option>80</option><option>40</option><option>0</option></select></div><div class="campo"><label for="c25">Competência 3: argumentação</label><select id="c25"><option>200</option><option>160</option><option>120</option><option>80</option><option>40</option><option>0</option></select></div><div class="campo"><label for="c26">Competência 4: coesão</label><select id="c26"><option>200</option><option>160</option><option>120</option><option>80</option><option>40</option><option>0</option></select></div><div class="campo"><label for="c27">Competência 5: intervenção</label><select id="c27"><option>200</option><option>160</option><option>120</option><option>80</option><option>40</option><option>0</option></select></div><div class="campo cheio"><label for="c28">Feedback escrito</label><textarea id="c28" rows="5" placeholder="Escreva os comentários para o aluno..."></textarea></div><div class="campo cheio"><button type="submit" class="btn">Enviar correção</button></div></form></section></div>
+    </main>
+</body>
+</html>

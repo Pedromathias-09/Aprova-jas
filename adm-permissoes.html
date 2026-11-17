@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="adm">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permissões | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-adm">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">⚙️ Área do Administrador</span>
+        <nav><a href="painel-adm.html" class=""><span>📊</span>Visão geral</a><a href="adm-usuarios.html" class=""><span>👥</span>Usuários</a><a href="adm-conteudo.html" class=""><span>🗂️</span>Conteúdo</a><a href="adm-financeiro.html" class=""><span>💳</span>Financeiro</a><a href="adm-relatorios.html" class=""><span>📈</span>Relatórios</a><a href="adm-permissoes.html" class="ativo"><span>🔑</span>Permissões</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Permissões</h1>
+                <p>Controle papéis, acessos e senhas.</p>
+            </div>
+            <div class="avatar">⚙️</div>
+        </header>
+        <div class="uma"><section class="caixa "><h3>🔑 Papéis e permissões</h3><div class="rolagem"><table class="tabela"><thead><tr><th>Papel</th><th>Usuários</th><th>Conteúdo</th><th>Financeiro</th><th>Relatórios</th></tr></thead><tbody><tr><td>Aluno</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Professor</td><td>—</td><td>✓</td><td>—</td><td>✓</td></tr><tr><td>Coordenador</td><td>✓</td><td>✓</td><td>—</td><td>✓</td></tr><tr><td>Suporte</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Administrador</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr></tbody></table></div></section></div>
+        <div class="duas">
+            <section class="caixa">
+                <h3>🔄 Reset de senha</h3>
+                <form class="form" id="form-reset" action="#">
+                    <div class="campo cheio"><label for="r-email">E-mail do usuário</label><input type="email" id="r-email" placeholder="email@exemplo.com" autocomplete="off" required></div>
+                    <div class="campo cheio"><button type="submit" class="btn">Gerar senha provisória</button></div>
+                </form>
+                <div class="aviso" id="resultado" hidden></div>
+                <p class="msg err" id="erro" role="alert" hidden></p>
+                <p class="texto" style="margin-top:12px">A senha antiga deixa de valer na hora. A pessoa é obrigada a criar uma nova no próximo acesso.</p>
+            </section>
+            <section class="caixa">
+                <h3>👑 Administradores</h3>
+                <p class="texto">O <strong>admin primário</strong> tem acesso aos demais administradores. Para criar ou bloquear um administrador, use a página Usuários.</p><br>
+                <div class="rolagem"><table class="tabela"><thead><tr><th>Nome</th><th>Tipo</th><th>Status</th></tr></thead><tbody id="tbody-adm"></tbody></table></div>
+            </section>
+        </div>
+    </main>
+    <script>
+    Auth.quando(function () {
+        var $ = function (id) { return document.getElementById(id); };
+        var tb = $('tbody-adm');
+        Auth.listar().filter(function (u) { return u.papel === 'adm'; }).forEach(function (u) {
+            var tr = document.createElement('tr'), a = document.createElement('td'), b = document.createElement('td'), c = document.createElement('td');
+            a.textContent = u.nome;
+            var t1 = document.createElement('span'); t1.className = 'badge ' + (u.primario ? 'ok' : 'pend'); t1.textContent = u.primario ? 'Primário' : 'Secundário'; b.appendChild(t1);
+            var t2 = document.createElement('span'); t2.className = 'badge ' + (u.ativo ? 'ok' : 'bad'); t2.textContent = u.ativo ? 'Ativo' : 'Bloqueado'; c.appendChild(t2);
+            tr.appendChild(a); tr.appendChild(b); tr.appendChild(c); tb.appendChild(tr);
+        });
+        $('form-reset').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var res = $('resultado'), err = $('erro'); res.hidden = true; err.hidden = true;
+            Auth.redefinirSenha($('r-email').value).then(function (r) {
+                if (!r.ok) { err.textContent = r.erro; err.hidden = false; return; }
+                res.innerHTML = '';
+                res.appendChild(document.createTextNode('Nova senha provisória de ' + r.nome + ' (aparece só agora): '));
+                var c = document.createElement('code'); c.textContent = r.senha; res.appendChild(c);
+                res.hidden = false; $('form-reset').reset();
+            });
+        });
+    });
+    </script>
+</body>
+</html>

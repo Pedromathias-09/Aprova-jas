@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questões | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class="ativo"><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Questões</h1>
+                <p>Resolva, revise e organize questões de vestibulares anteriores.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div id="q-raiz">
+            <div class="cab"><h2>Questões</h2></div>
+            <div class="abas" role="tablist" data-alvo="#q-raiz"><button type="button" role="tab" data-modo="resolver" class="ativa" aria-selected="true">Resolver</button><button type="button" role="tab" data-modo="revisar" class="" aria-selected="false">Revisar</button><button type="button" role="tab" data-modo="cadernos" class="" aria-selected="false">Cadernos</button></div>
+            <div id="q-area">
+                <div class="q-filtros">
+                    <div><label for="f-materia">Matéria</label><select id="f-materia"><option value="">Todas</option><option value="Matemática" selected>Matemática</option><option value="Física">Física</option><option value="Química">Química</option><option value="Biologia">Biologia</option></select></div>
+                    <div><label for="f-banca">Banca</label><select id="f-banca"><option value="" selected>Todas</option><option value="INEP">INEP</option><option value="Fuvest">Fuvest</option><option value="Vunesp">Vunesp</option><option value="Comvest">Comvest</option><option value="Unifesp">Unifesp</option></select></div>
+                    <div><label for="f-vest">Vestibular</label><select id="f-vest"><option value="" selected>Todos</option><option value="ENEM">ENEM</option><option value="FUVEST">FUVEST</option><option value="UNICAMP">UNICAMP</option><option value="UNESP">UNESP</option><option value="UNIFESP">UNIFESP</option></select></div>
+                    <div><label for="f-dif">Dificuldade</label><select id="f-dif"><option value="" selected>Todas</option><option value="Fácil">Fácil</option><option value="Médio">Médio</option><option value="Difícil">Difícil</option></select></div>
+                </div>
+                <section class="caixa" id="q-lista">
+                <div class="q-linha" id="q1" data-materia="Matemática" data-banca="INEP" data-vest="ENEM" data-dif="Médio">
+                    <div class="q-logo"><img src="img/enem.png" alt="ENEM"></div>
+                    <div class="q-tags"><span class="tag-azul">Matemática</span><span class="tag-azul">Geometria</span></div>
+                    <span class="dif medio">Médio</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q1">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                <div class="q-linha" id="q2" data-materia="Matemática" data-banca="Fuvest" data-vest="FUVEST" data-dif="Difícil">
+                    <div class="q-logo"><img src="img/fuvest.png" alt="FUVEST"></div>
+                    <div class="q-tags"><span class="tag-azul">Matemática</span><span class="tag-azul">Exponenciação</span></div>
+                    <span class="dif dificil">Difícil</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q2">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                <div class="q-linha" id="q3" data-materia="Matemática" data-banca="Vunesp" data-vest="UNESP" data-dif="Fácil">
+                    <div class="q-logo"><strong>VUNESP</strong></div>
+                    <div class="q-tags"><span class="tag-azul">Matemática</span><span class="tag-azul">Aritmética</span></div>
+                    <span class="dif facil">Fácil</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q3">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                <div class="q-linha" id="q4" data-materia="Matemática" data-banca="Unifesp" data-vest="UNIFESP" data-dif="Médio">
+                    <div class="q-logo"><strong>UNIFESP</strong></div>
+                    <div class="q-tags"><span class="tag-azul">Matemática</span><span class="tag-azul">Geometria</span></div>
+                    <span class="dif medio">Médio</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q4">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                <div class="q-linha" id="q5" data-materia="Matemática" data-banca="Comvest" data-vest="UNICAMP" data-dif="Difícil">
+                    <div class="q-logo"><img src="img/unicamp.png" alt="UNICAMP"></div>
+                    <div class="q-tags"><span class="tag-azul">Matemática</span><span class="tag-azul">Funções</span></div>
+                    <span class="dif dificil">Difícil</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q5">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                <div class="q-linha" id="q6" data-materia="Biologia" data-banca="INEP" data-vest="ENEM" data-dif="Médio" hidden>
+                    <div class="q-logo"><img src="img/enem.png" alt="ENEM"></div>
+                    <div class="q-tags"><span class="tag-azul">Biologia</span><span class="tag-azul">Genética</span></div>
+                    <span class="dif medio">Médio</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q6">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                <div class="q-linha" id="q7" data-materia="Física" data-banca="Comvest" data-vest="UNICAMP" data-dif="Difícil" hidden>
+                    <div class="q-logo"><img src="img/unicamp.png" alt="UNICAMP"></div>
+                    <div class="q-tags"><span class="tag-azul">Física</span><span class="tag-azul">Cinemática</span></div>
+                    <span class="dif dificil">Difícil</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q7">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                <div class="q-linha" id="q8" data-materia="Química" data-banca="Fuvest" data-vest="FUVEST" data-dif="Médio" hidden>
+                    <div class="q-logo"><img src="img/fuvest.png" alt="FUVEST"></div>
+                    <div class="q-tags"><span class="tag-azul">Química</span><span class="tag-azul">Estequiometria</span></div>
+                    <span class="dif medio">Médio</span>
+                    <button type="button" class="btn-azul btn-rev" data-q="q8">Revisar</button>
+                    <button type="button" class="estrela" aria-pressed="false" aria-label="Salvar questão">☆</button>
+                </div>
+                    <p class="vazio" id="q-vazio" hidden></p>
+                </section>
+            </div>
+            <section class="caixa" id="q-cadernos" hidden>
+                <h3>📚 Meus cadernos</h3>
+                <ul class="lista">
+                    <li><span class="tag">12</span><div><strong>Geometria plana</strong></div><em>questões</em></li>
+                    <li><span class="tag">20</span><div><strong>Revisão ENEM</strong></div><em>questões</em></li>
+                    <li><span class="tag">7</span><div><strong>Erradas desta semana</strong></div><em>questões</em></li>
+                </ul>
+            </section>
+        </div>
+
+        <dialog class="dialogo" id="dlg-q">
+            <h3 id="dq-titulo">Questão</h3>
+            <p class="texto" id="dq-enun"></p>
+            <form id="dq-form">
+                <div class="alternativas" id="dq-alts"></div>
+                <p class="msg" id="dq-msg" role="status" hidden></p>
+                <div class="botoes-linha">
+                    <button type="button" class="btn btn-sec" data-fechar>Fechar</button>
+                    <button type="submit" class="btn">Corrigir</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+    <script src="aluno.js"></script>
+    <script>
+(function () {
+    var Q = {"q1": {"e": "Um quadrado tem perímetro de 20 cm. Qual é a sua área?", "a": ["16 cm²", "20 cm²", "25 cm²", "100 cm²"], "c": 2}, "q2": {"e": "Qual é o valor de 2⁵ ÷ 2³?", "a": ["2", "4", "8", "16"], "c": 1}, "q3": {"e": "Quanto é 15% de 240?", "a": ["24", "30", "36", "48"], "c": 2}, "q4": {"e": "A soma dos ângulos internos de um triângulo é:", "a": ["90°", "180°", "270°", "360°"], "c": 1}, "q5": {"e": "Se f(x) = 2x + 3, quanto vale f(4)?", "a": ["8", "9", "11", "14"], "c": 2}, "q6": {"e": "No cruzamento Aa × Aa, que proporção dos descendentes é aa?", "a": ["0%", "25%", "50%", "100%"], "c": 1}, "q7": {"e": "Um móvel a 20 m/s, em movimento uniforme, percorre quanto em 5 s?", "a": ["4 m", "25 m", "100 m", "200 m"], "c": 2}, "q8": {"e": "Quantos mols há em 36 g de água (H₂O, 18 g/mol)?", "a": ["1 mol", "2 mols", "18 mols", "36 mols"], "c": 1}};
+    var lista = document.getElementById('q-lista'), vazio = document.getElementById('q-vazio');
+    var modo = 'resolver', salvas = [];
+    function v(id) { return document.getElementById(id).value; }
+
+    function aplicar() {
+        document.getElementById('q-area').hidden = modo === 'cadernos';
+        document.getElementById('q-cadernos').hidden = modo !== 'cadernos';
+        var n = 0;
+        lista.querySelectorAll('.q-linha').forEach(function (r) {
+            var ok = (!v('f-materia') || r.dataset.materia === v('f-materia')) && (!v('f-banca') || r.dataset.banca === v('f-banca')) &&
+                     (!v('f-vest') || r.dataset.vest === v('f-vest')) && (!v('f-dif') || r.dataset.dif === v('f-dif')) &&
+                     (modo !== 'revisar' || salvas.indexOf(r.id) >= 0);
+            r.hidden = !ok; if (ok) n++;
+        });
+        vazio.hidden = n > 0;
+        vazio.textContent = modo === 'revisar' ? 'Você ainda não salvou questões com esses filtros. Use a estrela para guardar.' : 'Nenhuma questão com esses filtros.';
+    }
+    ['f-materia', 'f-banca', 'f-vest', 'f-dif'].forEach(function (id) { document.getElementById(id).addEventListener('change', aplicar); });
+    document.querySelector('#q-raiz .abas').addEventListener('click', function (e) {
+        var b = e.target.closest('button'); if (!b) return; modo = b.getAttribute('data-modo'); aplicar();
+    });
+
+    function marcar(linha) {
+        var on = salvas.indexOf(linha.id) >= 0, s = linha.querySelector('.estrela');
+        s.classList.toggle('on', on); s.textContent = on ? '★' : '☆'; s.setAttribute('aria-pressed', on);
+    }
+    Auth.quando(function () {
+        salvas = AJ.ler(AJ.chave('salvas'), []);
+        lista.querySelectorAll('.q-linha').forEach(marcar); aplicar();
+    });
+
+    var atual = null;
+    lista.addEventListener('click', function (e) {
+        var linha = e.target.closest('.q-linha'); if (!linha) return;
+        if (e.target.closest('.estrela')) {
+            var i = salvas.indexOf(linha.id);
+            if (i >= 0) salvas.splice(i, 1); else salvas.push(linha.id);
+            AJ.gravar(AJ.chave('salvas'), salvas); marcar(linha); aplicar(); return;
+        }
+        var b = e.target.closest('.btn-rev'); if (!b) return;
+        atual = Q[b.getAttribute('data-q')];
+        document.getElementById('dq-titulo').textContent = linha.dataset.vest + ' · ' + linha.dataset.materia;
+        document.getElementById('dq-enun').textContent = atual.e;
+        var alts = document.getElementById('dq-alts'); alts.innerHTML = '';
+        atual.a.forEach(function (t, n) {
+            var l = document.createElement('label'), r = document.createElement('input');
+            r.type = 'radio'; r.name = 'alt'; r.value = n; l.appendChild(r); l.appendChild(document.createTextNode(' ' + String.fromCharCode(65 + n) + ') ' + t)); alts.appendChild(l);
+        });
+        document.getElementById('dq-msg').hidden = true;
+        document.getElementById('dlg-q').showModal();
+    });
+    document.getElementById('dq-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var esc = document.querySelector('#dq-alts input:checked'), m = document.getElementById('dq-msg');
+        if (!esc) { m.textContent = 'Escolha uma alternativa.'; m.className = 'msg err'; m.hidden = false; return; }
+        var certo = Number(esc.value) === atual.c;
+        document.querySelectorAll('#dq-alts label').forEach(function (l, n) {
+            l.classList.toggle('certa', n === atual.c); l.classList.toggle('errada', n === Number(esc.value) && !certo);
+        });
+        m.textContent = certo ? 'Correto! 🎉' : 'Quase lá. A alternativa correta está destacada em verde.';
+        m.className = 'msg ' + (certo ? 'ok' : 'err'); m.hidden = false;
+    });
+})();
+    </script>
+</body>
+</html>

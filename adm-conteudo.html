@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="adm">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-adm">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">⚙️ Área do Administrador</span>
+        <nav><a href="painel-adm.html" class=""><span>📊</span>Visão geral</a><a href="adm-usuarios.html" class=""><span>👥</span>Usuários</a><a href="adm-conteudo.html" class="ativo"><span>🗂️</span>Conteúdo</a><a href="adm-financeiro.html" class=""><span>💳</span>Financeiro</a><a href="adm-relatorios.html" class=""><span>📈</span>Relatórios</a><a href="adm-permissoes.html" class=""><span>🔑</span>Permissões</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Conteúdo</h1>
+                <p>Gerencie cursos, módulos, trilhas e o calendário de aulas ao vivo.</p>
+            </div>
+            <div class="avatar">⚙️</div>
+        </header>
+        <div class="duas"><section class="caixa "><h3>➕ Novo curso</h3><form class="form" action="#"><div class="campo"><label for="c41">Nome do curso</label><input type="text" id="c41" placeholder="Ex.: Biologia ENEM"></div><div class="campo"><label for="c42">Professor responsável</label><select id="c42"><option>Prof. Carlos</option><option>Profa. Marina</option></select></div><div class="campo"><label for="c43">Vestibular</label><select id="c43"><option>ENEM</option><option>FUVEST</option><option>UNICAMP</option><option>UNESP</option></select></div><div class="campo"><label for="c44">Capa / material</label><input type="file" id="c44" placeholder=""></div><div class="campo cheio"><button type="submit" class="btn">Criar curso</button></div></form></section><section class="caixa "><h3>🧭 Trilhas</h3><div class="barra-item"><div><span>Trilha ENEM</span><b>70%</b></div><div class="trilho"><span style="width:70%"></span></div></div><div class="barra-item"><div><span>Trilha FUVEST</span><b>40%</b></div><div class="trilho"><span style="width:40%"></span></div></div><div class="barra-item"><div><span>Trilha UNICAMP</span><b>35%</b></div><div class="trilho"><span style="width:35%"></span></div></div></section></div><div class="uma"><section class="caixa "><h3>🗂️ Cursos e módulos</h3><div class="rolagem"><table class="tabela"><thead><tr><th>Curso</th><th>Professor</th><th>Módulos</th><th>Status</th><th>Ações</th></tr></thead><tbody><tr><td>Matemática ENEM</td><td>Prof. Carlos</td><td>6</td><td><span class="badge ok">Publicado</span></td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr><tr><td>Biologia ENEM</td><td>Profa. Marina</td><td>5</td><td><span class="badge ok">Publicado</span></td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr><tr><td>Física FUVEST</td><td>Prof. Carlos</td><td>4</td><td><span class="badge pend">Rascunho</span></td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr></tbody></table></div></section></div><div class="uma"><section class="caixa "><h3>📅 Calendário de aulas ao vivo</h3><div class="rolagem"><table class="tabela"><thead><tr><th>Data</th><th>Horário</th><th>Aula</th><th>Professor</th><th>Ação</th></tr></thead><tbody><tr><td>01/10</td><td>19h</td><td>Funções do 2º grau</td><td>Prof. Carlos</td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr><tr><td>02/10</td><td>19h</td><td>Genética</td><td>Profa. Marina</td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr></tbody></table></div></section></div>
+    </main>
+</body>
+</html>

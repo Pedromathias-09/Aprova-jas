@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class="ativo"><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Metas</h1>
+                <p>Defina objetivos de estudo e acompanhe o progresso.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div id="metas-area">
+            <div class="cab"><h2>Metas</h2><button type="button" class="btn-azul" data-abrir="dlg-meta">+ Nova meta</button></div>
+            <div class="abas" role="tablist" data-alvo="#metas-area"><button type="button" role="tab" data-modo="todas" class="ativa" aria-selected="true">Todas</button><button type="button" role="tab" data-modo="curto" class="" aria-selected="false">Curto prazo</button><button type="button" role="tab" data-modo="medio" class="" aria-selected="false">Médio prazo</button><button type="button" role="tab" data-modo="longo" class="" aria-selected="false">Longo prazo</button></div>
+            <section class="caixa" id="metas-lista"></section>
+            <div class="resumo-metas" id="resumo"></div>
+        </div>
+
+        <dialog class="dialogo" id="dlg-meta">
+            <h3>Nova meta</h3>
+            <form class="form" id="form-meta">
+                <div class="campo cheio"><label for="m-desc">Meta</label><input type="text" id="m-desc" placeholder="Ex.: Resolver 100 questões de Física" required></div>
+                <div class="campo"><label for="m-prazo">Prazo</label><select id="m-prazo"><option value="curto">Curto prazo</option><option value="medio">Médio prazo</option><option value="longo">Longo prazo</option></select></div>
+                <div class="campo"><label for="m-un">Unidade (opcional)</label><input type="text" id="m-un" placeholder="h, questões, %"></div>
+                <div class="campo"><label for="m-alvo">Valor da meta</label><input type="number" id="m-alvo" min="1" value="10" required></div>
+                <div class="campo"><label for="m-atual">Já feito</label><input type="number" id="m-atual" min="0" value="0" required></div>
+                <div class="campo cheio botoes-linha"><button type="button" class="btn btn-sec" data-fechar>Cancelar</button><button type="submit" class="btn">Criar meta</button></div>
+            </form>
+        </dialog>
+    </main>
+    <script src="aluno.js"></script>
+    <script>
+Auth.quando(function () {
+    var chave = AJ.chave('metas'), filtro = 'todas';
+    var metas = AJ.ler(chave, null) || [
+        { id: 1, desc: 'Estudar 30h por semana', prazo: 'curto', un: 'h', alvo: 30, atual: 20 },
+        { id: 2, desc: 'Resolver 300 questões por semana', prazo: 'curto', un: '', alvo: 300, atual: 200 },
+        { id: 3, desc: 'Fazer 2 redações por semana', prazo: 'curto', un: '', alvo: 2, atual: 1 },
+        { id: 4, desc: 'Concluir revisão de Matemática', prazo: 'medio', un: '%', alvo: 100, atual: 70 },
+        { id: 5, desc: 'Atingir 800 pontos no simulado ENEM', prazo: 'longo', un: '', alvo: 800, atual: 720 }
+    ];
+    var $ = function (id) { return document.getElementById(id); };
+    function pct(m) { return Math.min(100, Math.round(m.atual / m.alvo * 100)); }
+    function salvar() { AJ.gravar(chave, metas); }
+
+    function desenhar() {
+        var box = $('metas-lista'); box.innerHTML = '';
+        var vis = metas.filter(function (m) { return filtro === 'todas' || m.prazo === filtro; });
+        if (!vis.length) { var v = document.createElement('p'); v.className = 'vazio'; v.textContent = 'Nenhuma meta nesta categoria.'; box.appendChild(v); }
+        vis.forEach(function (m) {
+            var p = pct(m), l = document.createElement('div'); l.className = 'meta-linha';
+            var a = document.createElement('div'), t = document.createElement('strong'), tr = document.createElement('div'), sp = document.createElement('span');
+            t.textContent = m.desc; tr.className = 'trilho-cor amarelo'; tr.setAttribute('role', 'progressbar'); tr.setAttribute('aria-valuenow', p); tr.setAttribute('aria-valuemin', 0); tr.setAttribute('aria-valuemax', 100); tr.setAttribute('aria-label', m.desc);
+            sp.style.width = p + '%'; tr.appendChild(sp); a.appendChild(t); a.appendChild(tr);
+            var val = document.createElement('div'); val.className = 'valor'; val.textContent = m.un === '%' ? m.atual + '%' : m.atual + (m.un ? m.un : '') + '/' + m.alvo + (m.un ? m.un : '');
+            var pc = document.createElement('div'); pc.className = 'pct'; pc.textContent = p + '%';
+            var ac = document.createElement('div'); ac.className = 'meta-acoes';
+            var mais = document.createElement('button'); mais.type = 'button'; mais.textContent = '＋'; mais.setAttribute('aria-label', 'Somar 1 ao progresso');
+            var del = document.createElement('button'); del.type = 'button'; del.textContent = '✕'; del.setAttribute('aria-label', 'Excluir meta');
+            mais.addEventListener('click', function () { m.atual = Math.min(m.alvo, m.atual + 1); salvar(); desenhar(); });
+            del.addEventListener('click', function () { if (confirm('Excluir esta meta?')) { metas = metas.filter(function (x) { return x.id !== m.id; }); salvar(); desenhar(); } });
+            ac.appendChild(mais); ac.appendChild(del);
+            l.appendChild(a); l.appendChild(val); l.appendChild(pc); l.appendChild(ac); box.appendChild(l);
+        });
+        var ativas = metas.filter(function (m) { return pct(m) < 100; }), feitas = metas.length - ativas.length;
+        var media = metas.length ? Math.round(metas.reduce(function (s, m) { return s + pct(m); }, 0) / metas.length) : 0;
+        var perto = ativas.slice().sort(function (x, y) { return pct(y) - pct(x); })[0];
+        var cards = [['Metas ativas', ativas.length], ['Metas concluídas', feitas], ['Progresso médio', media + '%'], ['Mais perto de concluir', perto ? perto.desc : '—']];
+        $('resumo').innerHTML = '';
+        cards.forEach(function (c) {
+            var d = document.createElement('div'), s = document.createElement('small'), b = document.createElement('strong');
+            s.textContent = c[0]; b.textContent = c[1]; if (typeof c[1] === 'string' && c[1].length > 14) b.style.fontSize = '15px';
+            d.appendChild(s); d.appendChild(b); $('resumo').appendChild(d);
+        });
+    }
+    document.querySelector('#metas-area .abas').addEventListener('click', function (e) {
+        var b = e.target.closest('button'); if (!b) return; filtro = b.getAttribute('data-modo'); desenhar();
+    });
+    $('form-meta').addEventListener('submit', function (e) {
+        e.preventDefault();
+        metas.push({ id: Date.now(), desc: $('m-desc').value.trim(), prazo: $('m-prazo').value, un: $('m-un').value.trim(), alvo: Number($('m-alvo').value), atual: Number($('m-atual').value) });
+        salvar(); $('form-meta').reset(); $('dlg-meta').close(); desenhar();
+    });
+    desenhar();
+});
+    </script>
+</body>
+</html>

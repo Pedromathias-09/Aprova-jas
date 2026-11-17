@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redações | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class=""><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class="ativo"><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Redações</h1>
+                <p>Escreva, envie e acompanhe a correção dos seus textos.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div id="red-area">
+            <div class="cab"><h2>Redações</h2><button type="button" class="btn-azul" data-abrir="dlg-red">+ Novo texto</button></div>
+            <div class="abas" role="tablist" data-alvo="#red-area"><button type="button" role="tab" data-aba="rascunho" class="ativa" aria-selected="true">Rascunho</button><button type="button" role="tab" data-aba="enviados" class="" aria-selected="false">Enviados</button><button type="button" role="tab" data-aba="correcoes" class="" aria-selected="false">Correções</button><button type="button" role="tab" data-aba="temas" class="" aria-selected="false">Temas</button></div>
+            <div class="red-grid">
+                <section class="cartao-azul">
+                    <div data-painel="rascunho" id="p-rascunho"><button type="button" class="red-item" data-abrir="dlg-red" data-tema="Desafios da educação no Brasil"><span>Tema: Desafios da educação no Brasil</span><span class="selo-st amarelo">Rascunho</span></button><button type="button" class="red-item" data-abrir="dlg-red" data-tema="Sustentabilidade e desenvolvimento"><span>Tema: Sustentabilidade e desenvolvimento</span><span class="selo-st amarelo">Rascunho</span></button></div>
+                    <div data-painel="enviados" id="p-enviados" hidden><div class="red-item"><span>Tema: Desafios do meio ambiente</span><span class="selo-st azul">Em correção</span></div></div>
+                    <div data-painel="correcoes" hidden><div class="red-item"><span>Tema: A influência das redes sociais na juventude</span><span class="selo-st verde">Corrigido · 760</span></div><div class="red-item"><span>Tema: Sustentabilidade e desenvolvimento</span><span class="selo-st verde">Corrigido · 840</span></div></div>
+                    <div data-painel="temas" hidden><div class="red-item"><span>Desafios da educação no Brasil</span><button type="button" class="btn-azul btn-claro peq" data-abrir="dlg-red" data-tema="Desafios da educação no Brasil">Escrever</button></div><div class="red-item"><span>Saúde mental dos jovens</span><button type="button" class="btn-azul btn-claro peq" data-abrir="dlg-red" data-tema="Saúde mental dos jovens">Escrever</button></div><div class="red-item"><span>Fake news e democracia</span><button type="button" class="btn-azul btn-claro peq" data-abrir="dlg-red" data-tema="Fake news e democracia">Escrever</button></div><div class="red-item"><span>Desafios do meio ambiente</span><button type="button" class="btn-azul btn-claro peq" data-abrir="dlg-red" data-tema="Desafios do meio ambiente">Escrever</button></div></div>
+                </section>
+                <aside class="cartao-azul red-card-dir">
+                    <h3>Desempenho nas redações</h3>
+                    <div class="mini-grafico" role="img" aria-label="Notas: 760 e 840">
+                        <div><b>760</b><i style="height:114px"></i><span>Red. 02</span></div>
+                        <div><b>840</b><i style="height:126px"></i><span>Red. 03</span></div>
+                    </div>
+                    <a href="aluno-notas.html" class="btn-azul btn-claro peq" style="text-align:center">Ver histórico</a>
+                </aside>
+            </div>
+        </div>
+
+        <dialog class="dialogo" id="dlg-red">
+            <h3>Novo texto</h3>
+            <p class="texto">Salve como rascunho ou envie para correção.</p>
+            <form class="form" id="form-red">
+                <div class="campo cheio"><label for="r-tema">Tema</label><input type="text" id="r-tema" list="lista-temas" required placeholder="Escolha ou digite o tema"></div>
+                <datalist id="lista-temas"><option value="Desafios da educação no Brasil"><option value="Saúde mental dos jovens"><option value="Fake news e democracia"><option value="Desafios do meio ambiente"></datalist>
+                <div class="campo cheio"><label for="r-forma">Forma de envio</label><select id="r-forma"><option value="texto">Digitar texto</option><option value="foto">Enviar foto</option></select></div>
+                <div class="campo cheio" id="c-texto"><label for="r-texto">Texto da redação</label><textarea id="r-texto" rows="7" placeholder="Digite ou cole sua redação aqui..."></textarea></div>
+                <div class="campo cheio" id="c-foto" hidden><label for="r-foto">Foto da redação</label><input type="file" id="r-foto" accept="image/*"></div>
+                <div class="campo cheio botoes-linha">
+                    <button type="button" class="btn btn-sec" data-fechar>Cancelar</button>
+                    <button type="submit" class="btn btn-sec" value="rascunho">Salvar rascunho</button>
+                    <button type="submit" class="btn" value="enviar">Enviar para correção</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+    <script src="aluno.js"></script>
+    <script>
+(function () {
+    var forma = document.getElementById('r-forma');
+    forma.addEventListener('change', function () {
+        document.getElementById('c-texto').hidden = forma.value === 'foto';
+        document.getElementById('c-foto').hidden = forma.value !== 'foto';
+    });
+    document.addEventListener('abrir-dialogo', function (e) {
+        if (e.detail.dialogo.id === 'dlg-red') document.getElementById('r-tema').value = e.detail.origem.getAttribute('data-tema') || '';
+    });
+    document.getElementById('form-red').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var enviar = e.submitter && e.submitter.value === 'enviar', tema = document.getElementById('r-tema').value.trim();
+        var linha = document.createElement('div'), t = document.createElement('span'), s = document.createElement('span');
+        linha.className = 'red-item'; t.textContent = 'Tema: ' + tema;
+        s.className = 'selo-st ' + (enviar ? 'azul' : 'amarelo'); s.textContent = enviar ? 'Em correção' : 'Rascunho';
+        linha.appendChild(t); linha.appendChild(s);
+        document.getElementById(enviar ? 'p-enviados' : 'p-rascunho').appendChild(linha);
+        document.getElementById('form-red').reset(); forma.dispatchEvent(new Event('change'));
+        document.getElementById('dlg-red').close();
+        document.querySelector('#red-area .abas button[data-aba=' + (enviar ? 'enviados' : 'rascunho') + ']').click();
+    });
+})();
+    </script>
+</body>
+</html>

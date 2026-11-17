@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="qualquer">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar nova senha | Aprova Já</title>
+    <link rel="stylesheet" href="auth.css">
+    <script src="auth.js"></script>
+</head>
+<body class="pagina-login tema-aluno">
+    <aside class="lado">
+        <div class="lado-icone">🔒</div>
+        <h2>Sua senha, só sua</h2>
+        <p>Use pelo menos 8 caracteres, com letras e números. Não repita senhas de outros sites.</p>
+    </aside>
+
+    <main class="form-area">
+        <div class="form-caixa">
+            <a href="idez.html" class="logo-link"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+            <h1>Criar nova senha</h1>
+            <p class="sub" id="texto-troca"></p>
+            <p class="erro" id="erro" role="alert" hidden></p>
+
+            <form id="form-troca" action="#" novalidate>
+                <label for="atual">Senha atual (ou provisória)</label>
+                <input type="password" id="atual" autocomplete="current-password" required>
+
+                <label for="nova">Nova senha</label>
+                <input type="password" id="nova" autocomplete="new-password" minlength="8" required>
+
+                <label for="confirmar">Confirmar nova senha</label>
+                <input type="password" id="confirmar" autocomplete="new-password" minlength="8" required>
+
+                <button type="submit" class="btn-entrar">Salvar nova senha</button>
+            </form>
+            <div class="outros"><a href="#" id="voltar" hidden>← Voltar ao painel</a></div>
+        </div>
+    </main>
+    <script>Auth.ligarTrocaSenha();</script>
+</body>
+</html>

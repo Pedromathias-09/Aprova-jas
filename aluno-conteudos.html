@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdos | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class="ativo"><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Conteúdos</h1>
+                <p>Assista às aulas, baixe materiais, siga sua trilha e treine com o banco de questões.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div id="cont-area">
+            <div class="abas" role="tablist" data-alvo="#cont-area">
+                <button type="button" role="tab" data-aba="aulas" class="ativa" aria-selected="true">Aulas e materiais</button>
+                <button type="button" role="tab" data-aba="banco" aria-selected="false">Banco de questões</button>
+            </div>
+            <div data-painel="aulas">
+        <div class="stats"><div class="stat"><small>Progresso geral</small><strong>62%</strong></div><div class="stat"><small>Aulas concluídas</small><strong>24</strong></div><div class="stat"><small>Materiais baixados</small><strong>11</strong></div></div><div class="duas"><section class="caixa "><h3>🧭 Trilha de aprendizagem</h3><div class="barra-item"><div><span>Módulo 1: Álgebra</span><b>100%</b></div><div class="trilho"><span style="width:100%"></span></div></div><div class="barra-item"><div><span>Módulo 2: Geometria</span><b>75%</b></div><div class="trilho"><span style="width:75%"></span></div></div><div class="barra-item"><div><span>Módulo 3: Genética</span><b>40%</b></div><div class="trilho"><span style="width:40%"></span></div></div><div class="barra-item"><div><span>Módulo 4: Mecânica</span><b>10%</b></div><div class="trilho"><span style="width:10%"></span></div></div></section><section class="caixa "><h3>🎯 Próximo passo</h3><p class="texto">Continue em <strong>Geometria: áreas e volumes</strong>. Faltam 3 aulas para concluir o módulo.</p><br><a href="#" class="btn btn-peq ">Continuar aula</a></section></div><div class="uma"><section class="caixa "><h3>📚 Aulas e materiais</h3><div class="rolagem"><table class="tabela"><thead><tr><th>Aula</th><th>Disciplina</th><th>Tipo</th><th>Ação</th></tr></thead><tbody><tr><td>Funções do 1º grau</td><td>Matemática</td><td>Vídeo</td><td><a href="#" class="btn btn-peq ">▶ Assistir</a></td></tr><tr><td>Resumo: Leis de Mendel</td><td>Biologia</td><td>Resumo em PDF</td><td><a href="#" class="btn btn-peq ">⬇ Baixar</a></td></tr><tr><td>Cinemática: MRU e MRUV</td><td>Física</td><td>Vídeo</td><td><a href="#" class="btn btn-peq ">▶ Assistir</a></td></tr><tr><td>Mapa mental: Citologia</td><td>Biologia</td><td>PDF</td><td><a href="#" class="btn btn-peq ">⬇ Baixar</a></td></tr><tr><td>Interpretação de texto</td><td>Português</td><td>Vídeo</td><td><a href="#" class="btn btn-peq ">▶ Assistir</a></td></tr></tbody></table></div></section></div>
+    </div>
+            <div data-painel="banco" hidden id="banco">
+                <section class="caixa">
+                    <h3>O que você quer praticar?</h3>
+                    <p class="b-intro">Combine os filtros e clique em Buscar questões. As questões foram elaboradas para treino, no estilo de cada vestibular, e seguem os mesmos conteúdos do seu plano de estudos.</p>
+                    <form id="b-form" action="#">
+                        <div class="b-filtros">
+                            <div class="campo"><label for="b-materia">Matéria</label><select id="b-materia"></select></div>
+                            <div class="campo"><label for="b-conteudo">Conteúdo</label><select id="b-conteudo"></select></div>
+                            <div class="campo"><label for="b-estilo">Estilo de prova</label><select id="b-estilo"><option value="">Todos</option><option>ENEM</option><option>FUVEST</option><option>UNICAMP</option><option>UNESP</option></select></div>
+                            <div class="campo"><label for="b-dif">Dificuldade</label><select id="b-dif"><option value="">Todas</option><option>Fácil</option><option>Médio</option><option>Difícil</option></select></div>
+                        </div>
+                        <div class="b-botoes">
+                            <button type="submit" class="btn">Buscar questões</button>
+                            <button type="button" class="btn btn-sec" id="b-limpar">Limpar filtros</button>
+                        </div>
+                    </form>
+                </section>
+
+                <div class="b-barra">
+                    <div><h3 id="b-total">Questões</h3><span class="b-resumo" id="b-resumo"></span></div>
+                    <button type="button" class="btn btn-sec btn-peq" id="b-salvas">★ Ver salvas</button>
+                </div>
+                <ul class="chips-filtro" id="b-chips" aria-label="Filtros ativos"></ul>
+
+                <p class="vazio" id="b-vazio" hidden></p>
+                <section class="caixa" id="b-card" hidden>
+                    <p class="b-contador" id="b-contador"></p>
+                    <div class="b-cab">
+                        <h4 id="b-titulo"></h4>
+                        <div class="b-acoes">
+                            <button type="button" class="btn btn-sec btn-peq" id="b-salvar" aria-pressed="false">☆ Salvar</button>
+                            <button type="button" class="btn btn-sec btn-peq" data-abrir="dlg-relato">Relatar problema</button>
+                        </div>
+                    </div>
+                    <div class="b-tags" id="b-tags"></div>
+                    <p class="b-apoio" id="b-apoio" hidden></p>
+                    <p class="b-enun" id="b-enun"></p>
+                    <fieldset class="alts" id="b-alts"><legend class="sr-only" id="b-legenda"></legend></fieldset>
+                    <div class="b-resp">
+                        <button type="button" class="btn" id="b-responder" disabled>Responder →</button>
+                        <span class="b-dica" id="b-dica">Escolha uma alternativa para responder.</span>
+                    </div>
+                    <div class="b-feedback" id="b-feedback" role="status" hidden></div>
+                    <p class="msg ok" id="b-relato-msg" role="status" hidden>Obrigado! Seu aviso foi registrado.</p>
+                    <details class="b-dados"><summary>Dados da questão</summary><dl id="b-dl"></dl></details>
+                    <div class="b-nav">
+                        <button type="button" class="btn btn-sec" id="b-ant">← Anterior</button>
+                        <button type="button" class="btn btn-sec" id="b-prox">Próxima →</button>
+                    </div>
+                </section>
+
+                <dialog class="dialogo" id="dlg-relato">
+                    <h3>Relatar problema</h3>
+                    <p class="texto">Encontrou algo errado nesta questão? Conte para a gente.</p>
+                    <form class="form" id="form-relato">
+                        <div class="campo cheio"><label for="rel-tipo">Qual é o problema?</label><select id="rel-tipo"><option>Enunciado com erro</option><option>Gabarito incorreto</option><option>Alternativas confusas</option><option>Outro</option></select></div>
+                        <div class="campo cheio"><label for="rel-texto">Detalhes</label><textarea id="rel-texto" rows="4" required></textarea></div>
+                        <div class="campo cheio botoes-linha"><button type="button" class="btn btn-sec" data-fechar>Cancelar</button><button type="submit" class="btn">Enviar</button></div>
+                    </form>
+                </dialog>
+            </div>
+        </div>
+    </main>
+    <script src="aluno.js"></script>
+    <script src="questoes-dados.js"></script>
+    <script src="banco.js"></script>
+</body>
+</html>

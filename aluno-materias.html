@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="aluno">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matérias | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="aluno-extra.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-aluno">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">🎓 Área do Aluno</span>
+        <nav><a href="painel-aluno.html" class=""><span>📊</span>Dashboard</a><a href="aluno-materias.html" class="ativo"><span>📚</span>Matérias</a><a href="aluno-questoes.html" class=""><span>❓</span>Questões</a><a href="aluno-simulados.html" class=""><span>📝</span>Simulados</a><a href="aluno-redacoes.html" class=""><span>✍️</span>Redações</a><a href="aluno-anotacoes.html" class=""><span>🗒️</span>Anotações</a><a href="aluno-metas.html" class=""><span>🎯</span>Metas</a><a href="aluno-estatisticas.html" class=""><span>📈</span>Estatísticas</a><a href="aluno-notas.html" class=""><span>🏆</span>Notas e feedbacks</a><a href="aluno-duvidas.html" class=""><span>💬</span>Dúvidas</a><a href="aluno-conta.html" class=""><span>⚙️</span>Minha conta</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Matérias</h1>
+                <p>Veja o quanto você já estudou em cada disciplina.</p>
+            </div>
+            <div class="avatar">🎓</div>
+        </header>
+        <div id="area-mat">
+            <div class="cab"><h2>Matérias</h2></div>
+            <div class="abas" role="tablist" data-alvo="#area-mat"><button type="button" role="tab" data-filtro="todas" class="ativa" aria-selected="true">Todas</button><button type="button" role="tab" data-filtro="exatas" class="" aria-selected="false">Exatas</button><button type="button" role="tab" data-filtro="humanas" class="" aria-selected="false">Humanas</button><button type="button" role="tab" data-filtro="natureza" class="" aria-selected="false">Natureza</button><button type="button" role="tab" data-filtro="linguagens" class="" aria-selected="false">Linguagens</button></div>
+            <section class="caixa">
+            <div class="materia-linha" data-grupo="exatas">
+                <div class="materia-icone" aria-hidden="true">🧮</div>
+                <div>
+                    <div class="materia-nome">Matemática</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em Matemática"><span style="width:68%"></span></div>
+                </div>
+                <div class="materia-info">27 de 40 tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            <div class="materia-linha" data-grupo="natureza">
+                <div class="materia-icone" aria-hidden="true">⚛️</div>
+                <div>
+                    <div class="materia-nome">Física</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em Física"><span style="width:50%"></span></div>
+                </div>
+                <div class="materia-info">15 de 30 tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            <div class="materia-linha" data-grupo="natureza">
+                <div class="materia-icone" aria-hidden="true">🧪</div>
+                <div>
+                    <div class="materia-nome">Química</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em Química"><span style="width:45%"></span></div>
+                </div>
+                <div class="materia-info">14 de 32 tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            <div class="materia-linha" data-grupo="natureza">
+                <div class="materia-icone" aria-hidden="true">🧬</div>
+                <div>
+                    <div class="materia-nome">Biologia</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em Biologia"><span style="width:70%"></span></div>
+                </div>
+                <div class="materia-info">25 de 36 tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            <div class="materia-linha" data-grupo="humanas">
+                <div class="materia-icone" aria-hidden="true">🏛️</div>
+                <div>
+                    <div class="materia-nome">História</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em História"><span style="width:38%"></span></div>
+                </div>
+                <div class="materia-info">11 de 28 tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            <div class="materia-linha" data-grupo="humanas">
+                <div class="materia-icone" aria-hidden="true">🌎</div>
+                <div>
+                    <div class="materia-nome">Geografia</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em Geografia"><span style="width:65%"></span></div>
+                </div>
+                <div class="materia-info">17 de 26 tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            <div class="materia-linha" data-grupo="linguagens">
+                <div class="materia-icone" aria-hidden="true">📖</div>
+                <div>
+                    <div class="materia-nome">Português</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em Português"><span style="width:95%"></span></div>
+                </div>
+                <div class="materia-info">38 de 40 tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            <div class="materia-linha" data-grupo="linguagens">
+                <div class="materia-icone" aria-hidden="true">🔤</div>
+                <div>
+                    <div class="materia-nome">Inglês</div>
+                    <div class="trilho-cor" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em Inglês"><span style="width:100%"></span></div>
+                </div>
+                <div class="materia-info">Todos os tópicos estudados</div>
+                <a href="aluno-conteudos.html" class="btn-azul peq">ver tópicos</a>
+            </div>
+            </section>
+        </div>
+    </main>
+    <script src="aluno.js"></script>
+</body>
+</html>

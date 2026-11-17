@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta | Aprova Já</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <script src="auth.js"></script>
+</head>
+<body>
+
+    <!-- LADO ESQUERDO -->
+    <aside class="lado">
+        <h2>Comece sua jornada rumo à <span>aprovação.</span></h2>
+        <p>Crie sua conta grátis e tenha acesso ao teste de nivelamento e aos melhores conteúdos para ENEM e vestibulares.</p>
+
+        <ul class="vantagens">
+            <li>✓ Gratuito para começar</li>
+            <li>✓ Sem cartão de crédito</li>
+            <li>✓ Plano de estudos personalizado</li>
+        </ul>
+
+        <img src="img/estudantes.png" alt="Três estudantes sorrindo" class="lado-img">
+    </aside>
+
+    <!-- FORMULÁRIO -->
+    <main class="form-area">
+        <div class="form-caixa">
+
+            <a href="idez.html" class="logo-link">
+                <img src="img/logo.png" alt="Aprova Já" class="logo-img">
+            </a>
+
+            <h1>Criar conta de aluno</h1>
+            <p class="sub">Preencha seus dados para começar a estudar.</p>
+
+            <p class="erro" id="erro" role="alert" hidden></p>
+
+            <form id="form-cadastro" action="#">
+
+                <div class="grade">
+                    <div class="campo cheio">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Seu nome" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="voce@email.com" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(11) 90000-0000">
+                    </div>
+
+                    <div class="campo">
+                        <label for="nascimento">Data de nascimento</label>
+                        <input type="date" id="nascimento" name="nascimento" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="vestibular">Vestibular que quer prestar</label>
+                        <select id="vestibular" name="vestibular" required>
+                            <option value="">Selecione</option>
+                            <option>ENEM</option>
+                            <option>FUVEST</option>
+                            <option>UNICAMP</option>
+                            <option>UNESP</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" autocomplete="new-password" placeholder="Mínimo de 8 caracteres" minlength="8" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="confirmar">Confirmar senha</label>
+                        <input type="password" id="confirmar" name="confirmar" autocomplete="new-password" placeholder="Repita a senha" minlength="8" required>
+                    </div>
+                </div>
+
+                <!-- PLANOS -->
+                <p class="rotulo">Escolha seu plano</p>
+                <div class="planos">
+                    <label class="plano-opcao">
+                        <input type="radio" name="plano" value="gratis" checked>
+                        <span class="plano-card">
+                            <strong>Grátis</strong>
+                            <em>R$ 0/mês</em>
+                            <small>Teste de nivelamento e conteúdos gratuitos</small>
+                        </span>
+                    </label>
+
+                    <label class="plano-opcao">
+                        <input type="radio" name="plano" value="pro">
+                        <span class="plano-card">
+                            <strong>Pro <b class="selo">Popular</b></strong>
+                            <em>R$ 29,90/mês</em>
+                            <small>Plano personalizado, simulados e relatórios</small>
+                        </span>
+                    </label>
+                </div>
+
+                <label class="termos">
+                    <input type="checkbox" required>
+                    <span>Li e aceito os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>.</span>
+                </label>
+
+                <button type="submit" class="btn-criar">Criar minha conta →</button>
+            </form>
+
+            <p class="rodape-form">Já tem uma conta? <a href="login.html">Entrar</a></p>
+        </div>
+    </main>
+
+<script>Auth.ligarCadastro();</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; font-family: Arial, Helvetica, sans-serif; color: #11182e; background: radial-gradient(circle at 50% 0%, rgba(45,63,211,.14), transparent 45%), #f4f6fa; }
+a { text-decoration: none; color: inherit; }
+:root, .tema-aluno, .tema-professor, .tema-adm { --cor: #2d3fd3; --cor-escura: #1a2087; --cor-clara: #e8edff; --laranja: #f39a08; --amarelo: #ffc94d; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+[hidden] { display: none !important; }
+.logo-img { height: 44px; width: auto; display: block; }
+
+.q-topo { max-width: 760px; margin: 0 auto; padding: 22px 20px 6px; display: flex; align-items: center; justify-content: space-between; }
+.q-etapa-topo { padding: 7px 14px; border-radius: 999px; background: var(--cor-clara); color: var(--cor-escura); font-size: 13px; font-weight: bold; }
+.q-main { max-width: 760px; margin: 0 auto; padding: 10px 20px 60px; }
+.q-progresso { height: 8px; margin: 14px 0 22px; overflow: hidden; border-radius: 20px; background: #e1e5ee; }
+.q-progresso span { display: block; width: 0; height: 100%; border-radius: 20px; background: var(--cor); transition: width .3s; }
+
+.q-card { padding: 34px; border: 1px solid #e0e4e9; border-radius: 24px; background: #fff; box-shadow: 0 20px 45px rgba(30,43,65,.07); }
+.q-sub { margin-bottom: 10px; color: var(--cor); font-size: 13px; font-weight: bold; letter-spacing: .6px; text-transform: uppercase; }
+.q-card h1 { margin-bottom: 22px; font-size: 27px; line-height: 1.3; }
+.q-texto { margin: -8px 0 22px; color: #526986; line-height: 1.6; font-size: 17px; }
+.q-opcoes { border: none; display: grid; gap: 12px; }
+.q-opcoes label { padding: 16px 18px; display: flex; align-items: center; gap: 12px; border: 2px solid #e0e4e9; border-radius: 14px; font-size: 17px; cursor: pointer; transition: .2s; }
+.q-opcoes label:hover { border-color: #a9b6ff; }
+.q-opcoes input { width: 20px; height: 20px; accent-color: var(--cor); }
+.q-opcoes label:has(input:checked) { border-color: var(--cor); background: var(--cor-clara); font-weight: bold; }
+.q-opcoes label:has(input:focus-visible) { box-shadow: 0 0 0 4px var(--cor-clara); }
+.q-opcoes label.nao-sei { color: #526986; border-style: dashed; }
+
+.q-nav { margin-top: 26px; display: flex; justify-content: space-between; gap: 12px; }
+.q-btn { padding: 14px 26px; border: none; border-radius: 14px; background: var(--cor); color: #fff; font-family: inherit; font-size: 16px; font-weight: bold; cursor: pointer; transition: .2s; display: inline-block; text-align: center; }
+.q-btn:hover { background: var(--cor-escura); }
+.q-btn:disabled { opacity: .45; cursor: not-allowed; }
+.q-btn-sec { background: #fff; color: #11182e; border: 1px solid #dfe3ea; }
+.q-btn-sec:hover { background: #f4f6fa; }
+.q-btn:focus-visible { outline: 3px solid #ffc94d; outline-offset: 2px; }
+
+/* Feedback */
+.q-feedback h2 { margin: 26px 0 12px; font-size: 17px; }
+.f-topo { display: flex; gap: 22px; align-items: flex-start; }
+.f-nota { flex-shrink: 0; width: 112px; height: 112px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 5px solid var(--cor); border-radius: 50%; color: var(--cor-escura); }
+.f-nota strong { font-size: 38px; line-height: 1; }
+.f-nota small { font-size: 12px; }
+.f-nivel { padding: 5px 12px; border-radius: 999px; background: var(--cor-clara); color: var(--cor-escura); font-size: 13px; font-weight: bold; }
+.f-texto { margin-top: 12px; color: #2b3a52; line-height: 1.7; font-size: 16px; }
+.f-materias { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.f-materias li { padding: 10px 12px; display: flex; justify-content: space-between; gap: 8px; border-radius: 12px; font-size: 14px; font-weight: bold; }
+.f-materias .ok { background: #eafaf0; color: #0f8a43; }
+.f-materias .ruim { background: #fff4df; color: #b87000; }
+.f-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.f-chips li { padding: 8px 14px; border-radius: 999px; background: #f4f6fa; font-size: 14px; }
+.q-nav-fim { flex-wrap: wrap; }
+
+@media (max-width: 640px) {
+    .q-card { padding: 22px; }
+    .q-card h1 { font-size: 22px; }
+    .f-topo { flex-direction: column; }
+    .f-materias { grid-template-columns: 1fr 1fr; }
+    .q-nav { flex-direction: column-reverse; }
+}

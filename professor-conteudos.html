@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="professor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus conteúdos | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-professor">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">👩‍🏫 Área do Professor</span>
+        <nav><a href="painel-professor.html" class=""><span>📊</span>Visão geral</a><a href="professor-conteudos.html" class="ativo"><span>🗂️</span>Meus conteúdos</a><a href="professor-estudio.html" class=""><span>🎥</span>Estúdio ao vivo</a><a href="professor-redacoes.html" class=""><span>✅</span>Correção de redações</a><a href="professor-duvidas.html" class=""><span>💬</span>Dúvidas dos alunos</a><a href="professor-metricas.html" class=""><span>📈</span>Métricas</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Meus conteúdos</h1>
+                <p>Envie aulas e organize cursos, módulos e trilhas de aprendizagem.</p>
+            </div>
+            <div class="avatar">👩‍🏫</div>
+        </header>
+        <div class="duas"><section class="caixa "><h3>⬆️ Nova aula</h3><form class="form" action="#"><div class="campo"><label for="c18">Título da aula</label><input type="text" id="c18" placeholder="Ex.: Funções do 2º grau"></div><div class="campo"><label for="c19">Tipo de conteúdo</label><select id="c19"><option>Vídeo</option><option>Texto</option><option>PDF</option><option>Questões</option></select></div><div class="campo"><label for="c20">Curso</label><select id="c20"><option>Matemática ENEM</option><option>Álgebra Avançada</option></select></div><div class="campo"><label for="c21">Módulo</label><select id="c21"><option>Módulo 1</option><option>Módulo 2</option><option>Módulo 3</option></select></div><div class="campo"><label for="c22">Arquivo</label><input type="file" id="c22" placeholder=""></div><div class="campo cheio"><button type="submit" class="btn">Publicar aula</button></div></form></section><section class="caixa "><h3>🧭 Trilhas de aprendizagem</h3><div class="barra-item"><div><span>Matemática ENEM</span><b>80%</b></div><div class="trilho"><span style="width:80%"></span></div></div><div class="barra-item"><div><span>Álgebra Avançada</span><b>45%</b></div><div class="trilho"><span style="width:45%"></span></div></div><div class="barra-item"><div><span>Revisão Final</span><b>20%</b></div><div class="trilho"><span style="width:20%"></span></div></div><br><a href="#" class="btn btn-peq ">+ Nova trilha</a></section></div><div class="uma"><section class="caixa "><h3>🗂️ Cursos e módulos</h3><div class="rolagem"><table class="tabela"><thead><tr><th>Curso</th><th>Módulos</th><th>Aulas</th><th>Status</th><th>Ações</th></tr></thead><tbody><tr><td>Matemática ENEM</td><td>6</td><td>36</td><td><span class="badge ok">Publicado</span></td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr><tr><td>Álgebra Avançada</td><td>4</td><td>22</td><td><span class="badge ok">Publicado</span></td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr><tr><td>Revisão Final</td><td>3</td><td>9</td><td><span class="badge pend">Rascunho</span></td><td><a href="#" class="btn btn-peq ">Editar</a></td></tr></tbody></table></div></section></div>
+    </main>
+</body>
+</html>

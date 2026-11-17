@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-papel="professor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estúdio ao vivo | Aprova Já</title>
+    <link rel="stylesheet" href="painel.css">
+    <script src="auth.js"></script>
+</head>
+<body class="tema-professor">
+    <aside class="menu">
+        <a href="idez.html" class="menu-logo"><img src="img/logo.png" alt="Aprova Já" class="logo-img"></a>
+        <span class="menu-perfil">👩‍🏫 Área do Professor</span>
+        <nav><a href="painel-professor.html" class=""><span>📊</span>Visão geral</a><a href="professor-conteudos.html" class=""><span>🗂️</span>Meus conteúdos</a><a href="professor-estudio.html" class="ativo"><span>🎥</span>Estúdio ao vivo</a><a href="professor-redacoes.html" class=""><span>✅</span>Correção de redações</a><a href="professor-duvidas.html" class=""><span>💬</span>Dúvidas dos alunos</a><a href="professor-metricas.html" class=""><span>📈</span>Métricas</a></nav>
+        <a href="login.html" class="sair">↩ Sair</a>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topo">
+            <div>
+                <h1>Estúdio ao vivo</h1>
+                <p>Compartilhe a tela e use o quadro branco digital com seus alunos.</p>
+            </div>
+            <div class="avatar">👩‍🏫</div>
+        </header>
+
+        <div class="stats">
+            <div class="stat"><small>Status</small><strong id="status">Offline</strong></div>
+            <div class="stat"><small>Tempo no ar</small><strong id="tempo">00:00:00</strong></div>
+            <div class="stat"><small>Alunos assistindo</small><strong id="alunos">0</strong></div>
+        </div>
+
+        <div class="duas">
+            <section class="caixa">
+                <h3>🎥 Transmissão</h3>
+                <div class="player" id="player">
+                    <span id="player-msg">Clique em “Iniciar transmissão” para entrar no ar.</span>
+                    <video id="video" autoplay muted playsinline hidden></video>
+                </div>
+                <div class="quadro" id="quadro">
+                    <canvas id="tela-quadro" width="800" height="360" aria-label="Quadro branco"></canvas>
+                    <div class="botoes-linha">
+                        <button type="button" class="btn btn-peq btn-sec" id="limpar-quadro">Limpar quadro</button>
+                    </div>
+                </div>
+                <div class="botoes-linha">
+                    <button type="button" class="btn" id="btn-iniciar">Iniciar transmissão</button>
+                    <button type="button" class="btn btn-sec" id="btn-tela" disabled>Compartilhar tela</button>
+                    <button type="button" class="btn btn-sec" id="btn-quadro" disabled>Quadro branco</button>
+                    <button type="button" class="btn btn-sec" id="btn-encerrar" disabled>Encerrar</button>
+                </div>
+            </section>
+
+            <section class="caixa">
+                <h3>💬 Chat da aula</h3>
+                <ul class="lista-chat" id="chat">
+                    <li><span><strong>Ana L.:</strong> Professora, pode repetir o exemplo?</span><em>19:02</em></li>
+                    <li><span><strong>Bruno M.:</strong> O áudio está ótimo!</span><em>19:03</em></li>
+                </ul>
+                <form class="chat-envio" id="chat-form">
+                    <input type="text" id="chat-texto" placeholder="Escreva uma mensagem..." aria-label="Mensagem" required>
+                    <button type="submit" class="btn btn-peq">Enviar</button>
+                </form>
+            </section>
+        </div>
+
+        <div class="uma">
+            <section class="caixa">
+                <h3>📅 Aulas ao vivo agendadas</h3>
+                <div class="rolagem"><table class="tabela"><thead><tr><th>Dia</th><th>Horário</th><th>Aula</th><th>Status</th></tr></thead><tbody>
+                    <tr><td>Terça</td><td>19h</td><td>Funções do 2º grau</td><td><span class="badge ok">Agendada</span></td></tr>
+                    <tr><td>Quinta</td><td>19h</td><td>Revisão de Álgebra</td><td><span class="badge ok">Agendada</span></td></tr>
+                    <tr><td>Sábado</td><td>10h</td><td>Plantão de dúvidas</td><td><span class="badge pend">A confirmar</span></td></tr>
+                </tbody></table></div>
+            </section>
+        </div>
+    </main>
+    <script src="estudio.js"></script>
+</body>
+</html>
